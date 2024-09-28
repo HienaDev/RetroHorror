@@ -102,7 +102,7 @@ MonoBehaviour:
   back: 115
   left: 97
   right: 100
-  movementSpeed: 10
+  movementSpeed: 5
 --- !u!1 &979304372948758720
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 90
   m_InnerSpotAngle: 0
@@ -285,8 +285,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 5
+  m_Intensity: 1
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
