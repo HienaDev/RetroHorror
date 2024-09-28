@@ -19,6 +19,7 @@ public class LightningStrike : MonoBehaviour
 
     [SerializeField] private KeyCode takePhoto = KeyCode.Mouse0;
 
+    [SerializeField] private TakePicture takePicture;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,9 @@ public class LightningStrike : MonoBehaviour
         yield return new WaitForSeconds(0.1f * 2);
 
         lightStrike.intensity = intensityNextStrike;
+        yield return null;
+
+        takePicture.CameraShooting();
 
         yield return new WaitForSeconds(0.1f);
 
