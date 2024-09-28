@@ -2278,6 +2278,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6380738418056233558, guid: a8543d5612af4fb449a0860d40c72adc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00000046473002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380738418056233558, guid: a8543d5612af4fb449a0860d40c72adc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00485737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380738418056233558, guid: a8543d5612af4fb449a0860d40c72adc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000003182795
+      objectReference: {fileID: 0}
     - target: {fileID: 6567725207882585839, guid: a8543d5612af4fb449a0860d40c72adc, type: 3}
       propertyPath: m_Name
       value: MonsterPlantv23
