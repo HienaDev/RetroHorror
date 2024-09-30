@@ -83,10 +83,6 @@ public class PhoneLogic : MonoBehaviour
                 phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
 
 
-                hide.SetActive(false);
-                dontMove.SetActive(false);
-                heedMyCalls.SetActive(false);
-
                 playerPos.ToggleMovement(true);
                 playerPos.GetComponentInChildren<Animator>().SetBool("Calling", false);
             }
