@@ -2630,6 +2630,12 @@ MonoBehaviour:
   hideSound:
   - {fileID: 8300000, guid: 0a32aea733c3fe442b1319af59db2ca1, type: 3}
   hideMixer: {fileID: 0}
+  heedMyCallSound:
+  - {fileID: 8300000, guid: ed51e1fd2d021324cbcb8643f466f4a6, type: 3}
+  - {fileID: 8300000, guid: 8e2d465f0161b2b4b9545e94b06b4002, type: 3}
+  - {fileID: 8300000, guid: 6bdaeed7a1504d44e946b44e9eab9b51, type: 3}
+  - {fileID: 8300000, guid: 8c9b63141691cc54a86e8cc9141224c6, type: 3}
+  heedMyCallMixer: {fileID: 0}
   timeBetweenRinging: 0
 --- !u!64 &287712996
 MeshCollider:
@@ -8611,6 +8617,8 @@ MonoBehaviour:
   dontMoveMixer: {fileID: 0}
   hideSound: []
   hideMixer: {fileID: 0}
+  heedMyCallSound: []
+  heedMyCallMixer: {fileID: 0}
   timeBetweenRinging: 0
 --- !u!114 &670741811
 MonoBehaviour:
@@ -8625,10 +8633,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionKey: 101
-  phoneCooldown: {x: 30, y: 50}
+  phoneCooldown: {x: 10, y: 10}
   minimumDistanceForPhone: 12
   minimumDistanceForInteraction: 3
-  playerPos: {fileID: 1015893147}
+  playerPos: {fileID: 1719867429}
+  handPhoneSounds: {fileID: 283989373}
+  npcSpawner: {fileID: 670741812}
+--- !u!114 &670741812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29254670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62942ab89a2dde43ac8a27e8eeffa46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcPrefab: {fileID: 4922548625144104067, guid: 5c7447a8b1230d546b31f543a72c9d4b, type: 3}
+  minSpawnRadius: 7
+  maxSpawnRadius: 20
+  player: {fileID: 1015893147}
 --- !u!64 &674126181
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16420,54 +16446,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1930915757654580780, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
---- !u!1 &1306150541
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1306150543}
-  - component: {fileID: 1306150542}
-  m_Layer: 0
-  m_Name: NPCSpanwer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1306150542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306150541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a62942ab89a2dde43ac8a27e8eeffa46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 4922548625144104067, guid: 5c7447a8b1230d546b31f543a72c9d4b, type: 3}
-  minSpawnRadius: 0
-  maxSpawnRadius: 20
-  player: {fileID: 1015893147}
---- !u!4 &1306150543
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306150541}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 2.25, z: 2.21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1306230027
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19273,6 +19251,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e08986ac0e8721468a78357423955c1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 670741811}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e08986ac0e8721468a78357423955c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 670741812}
   m_SourcePrefab: {fileID: 100100000, guid: 4e08986ac0e8721468a78357423955c1, type: 3}
 --- !u!64 &1572188117
 MeshCollider:
@@ -20930,6 +20911,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -396626446701031197, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
+--- !u!114 &1719867429 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5094401406324160631, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+  m_PrefabInstance: {fileID: 1559369816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdc4f09b98f94945ac02cfd2adc7e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1724544748
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -91437,5 +91429,4 @@ SceneRoots:
   - {fileID: 1312349115}
   - {fileID: 2053142597}
   - {fileID: 502309308}
-  - {fileID: 1306150543}
   - {fileID: 1326410568}

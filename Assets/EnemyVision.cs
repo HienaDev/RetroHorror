@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using static UnityEngine.Rendering.VirtualTexturing.Debugging;
 public class EnemyVision : MonoBehaviour
 {
     public Transform player; // Reference to the player's transform
@@ -17,6 +18,20 @@ public class EnemyVision : MonoBehaviour
 
     private Vector3 currentRoamLocation;
     private NavMeshAgent npcAgent;
+
+    [SerializeField] private float timeAlive = 20f;
+    [SerializeField] private float timeAliveForDontMove = 5f;
+    private float justSpawned = Mathf.Infinity;
+
+    private bool canDie = false;
+
+    private void Start()
+    {
+        justSpawned = Time.time;
+
+        if (currentState == State.DontMove)
+            ChasePlayer();
+    }
 
     private void FixedUpdate()
     {
@@ -40,6 +55,22 @@ public class EnemyVision : MonoBehaviour
             ChasePlayer();
         }
 
+        if (currentState == State.DontMove && player.GetComponent<PlayerMovement>().IsMoving())
+        {
+
+            currentState = State.Chase;
+            GetComponentInChildren<Animator>().SetTrigger("Crawl");
+            npcAgent.speed = 5f;
+
+        }
+
+
+        if (Time.time - justSpawned > timeAlive)
+        {
+            if (currentState == State.Looking || (currentState == State.DontMove && canDie))
+                Destroy(gameObject);
+        }
+
         CheckArrival(npcAgent);
     }
 
@@ -57,6 +88,12 @@ public class EnemyVision : MonoBehaviour
         {
             // Step 5: Once the NPC arrives, find a new destination
             Debug.Log("NPC arrived at destination. Finding new destination...");
+            if (currentState == State.DontMove)
+            {
+                canDie = true;
+                timeAlive = timeAliveForDontMove;
+                justSpawned = Time.time;
+            }
             StartCoroutine(SetNextDestination(agent, agent.transform.position, minMoveDistance));
         }
 

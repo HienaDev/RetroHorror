@@ -26,6 +26,10 @@ public class PhoneSounds : MonoBehaviour
     private AudioSource audioSourceHide;
     [SerializeField] private AudioMixerGroup hideMixer;
 
+    [SerializeField] private AudioClip[] heedMyCallSound;
+    private AudioSource audioSourceHeedMyCall;
+    [SerializeField] private AudioMixerGroup heedMyCallMixer;
+
     [SerializeField] private float timeBetweenRinging;
 
     private PlayerMovement playerScript;
@@ -55,25 +59,39 @@ public class PhoneSounds : MonoBehaviour
         audioSourceHide.playOnAwake = false;
         //audioSourceHide.outputAudioMixerGroup = hideMixer;
 
+        audioSourceHeedMyCall = gameObject.AddComponent<AudioSource>();
+        audioSourceHeedMyCall.playOnAwake = false;
+        //audioSourceHide.outputAudioMixerGroup = hideMixer;
+
         audioSourcePutDown.spatialBlend = 1;
         audioSourceRinging.spatialBlend = 1;
         audioSourceDontMove.spatialBlend = 1;
         audioSourceHide.spatialBlend = 1;
+        audioSourceHeedMyCall.spatialBlend = 1;
 
         audioSourceDontMove.maxDistance = 0.5f;
         audioSourceDontMove.minDistance = 0.5f;
         audioSourceHide.maxDistance = 0.5f;
         audioSourceHide.minDistance = 0.5f;
+        audioSourceHeedMyCall.maxDistance = 0.5f;
+        audioSourceHeedMyCall.minDistance = 0.5f;
 
         audioSourcePutDown.volume = 0.2f;
         audioSourceRinging.volume = 1f;
         audioSourceDontMove.volume = 0.4f;
         audioSourcePickUp.volume = 1f;
         audioSourceHide.volume = 0.4f;
-
+        audioSourceHeedMyCall.volume = 0.4f;
 
         //audioSourcePickUp.clip = pickUpSound;
         audioSourceRinging.loop = true;
+        if (ringingSound.Length > 0)
+        {
+            audioSourceRinging.clip = ringingSound[Random.Range(0, ringingSound.Length)];
+            audioSourceRinging.pitch = Random.Range(0.95f, 1.05f);
+
+            audioSourceRinging?.Play();
+        }
 
         justStep = timeBetweenRinging;
 
@@ -95,14 +113,14 @@ public class PhoneSounds : MonoBehaviour
 
     public void PlayRingingSound()
     {
-
-        audioSourceRinging.volume = 1f;
+        if(audioSourceRinging != null)
+            audioSourceRinging.volume = 1f;
     }
 
     public void StopRingingSound()
     {
-
-        audioSourceRinging.volume = 0f;
+        if (audioSourceRinging != null)
+            audioSourceRinging.volume = 0f;
     }
 
     public void PlayPutDownSound()
@@ -151,5 +169,20 @@ public class PhoneSounds : MonoBehaviour
 
             audioSourceHide?.Play();
         }
+    }
+
+    public void PlayHeedMyCallSound()
+    {
+        Debug.Log("play heed my call");
+        if (heedMyCallSound.Length > 0)
+        {
+            Debug.Log("play heed my call was played");
+            audioSourceHeedMyCall.clip = heedMyCallSound[Random.Range(0, heedMyCallSound.Length)];
+            audioSourceHeedMyCall.pitch = Random.Range(0.95f, 1.05f);
+
+            audioSourceHeedMyCall?.Play();
+        }
+        else
+            Debug.Log("cant find heed my call");
     }
 }

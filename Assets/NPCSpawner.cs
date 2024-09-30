@@ -15,13 +15,8 @@ public class NPCSpawner : MonoBehaviour
 
     
 
-    void Start()
-    {
-        SpawnNPC(State.Looking);
-    }
 
-
-    void SpawnNPC(State state)
+    public void SpawnNPC(State state)
     {
 
         if (state == State.Looking)
@@ -38,6 +33,25 @@ public class NPCSpawner : MonoBehaviour
                 npc.GetComponent<EnemyVision>().SetState(state);
                 npc.GetComponent<EnemyVision>().StartRoaming(spawnPosition);
                 
+            }
+            else
+            {
+                Debug.LogError("Failed to find a valid NavMesh position to spawn NPC.");
+            }
+        }
+        else if (state == State.DontMove)
+        {
+            // Step 1: Find a random position on the NavMesh for the NPC to spawn
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 7f, 10f);
+
+            if (spawnPosition != Vector3.zero)
+            {
+                // Step 2: Instantiate the NPC
+                GameObject npc = Instantiate(npcPrefab, spawnPosition, Quaternion.identity);
+                npc.GetComponent<EnemyVision>().SetPlayer(player);
+                npc.GetComponent<EnemyVision>().SetState(state);
+                npc.GetComponent<EnemyVision>().StartRoaming(spawnPosition);
+
             }
             else
             {
@@ -75,5 +89,8 @@ public class NPCSpawner : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, maxSpawnRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, minSpawnRadius);
     }
 }
