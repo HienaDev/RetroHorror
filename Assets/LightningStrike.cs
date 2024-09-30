@@ -5,13 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Light))]
 public class LightningStrike : MonoBehaviour
 {
+
+    [SerializeField] private float pictureCooldown = 1f;
+
     [SerializeField] private Vector2 intensityStrike;
     private float intensityNextStrike;
     [SerializeField] private Vector2 timeToLastStrike;
     private float timeToNextStrike;
-    [SerializeField] private Vector2 nextStrikeCooldown;
-    private float strikeCooldown;
-    private float justStruck;
+
 
     private Light lightStrike;
 
@@ -20,6 +21,9 @@ public class LightningStrike : MonoBehaviour
     [SerializeField] private KeyCode takePhoto = KeyCode.Mouse0;
 
     [SerializeField] private TakePicture takePicture;
+
+    [SerializeField] private PlayerSounds playerSounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,42 +31,25 @@ public class LightningStrike : MonoBehaviour
 
         intensityNextStrike = Random.Range(intensityStrike.x, intensityStrike.y);
         timeToNextStrike = Random.Range(timeToLastStrike.x, timeToLastStrike.y);
-        strikeCooldown = Random.Range(nextStrikeCooldown.x, nextStrikeCooldown.y);
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(readyForNextStrike && Time.time - justStruck > strikeCooldown)
-        //{
-        //    readyForNextStrike = false;
-        //    StartCoroutine(Strike());
-        //}
 
-        if(Input.GetKeyDown(takePhoto))
+
+        if(Input.GetKeyDown(takePhoto) && readyForNextStrike)
         {
+            readyForNextStrike = false;
             StartCoroutine(Strike());
+            playerSounds.PlayTakePictureSound();
         }
     }
 
     private IEnumerator Strike()
     {
-        //float lerpValue = 0f;
-
-        //while(lerpValue < 1f)
-        //{
-        //    lerpValue += Time.deltaTime / (timeToNextStrike / 2);
-        //    lightStrike.intensity = Mathf.Lerp(0, intensityNextStrike, lerpValue);
-        //    yield return null;
-        //}
-
-        //while (lerpValue > 0f)
-        //{
-        //    lerpValue -= Time.deltaTime / (timeToNextStrike / 2);
-        //    lightStrike.intensity = Mathf.Lerp(0, intensityNextStrike, lerpValue);
-        //    yield return null;
-        //}
 
         lightStrike.intensity = intensityNextStrike;
 
@@ -83,8 +70,10 @@ public class LightningStrike : MonoBehaviour
 
         intensityNextStrike = Random.Range(intensityStrike.x, intensityStrike.y);
         timeToNextStrike = Random.Range(timeToLastStrike.x, timeToLastStrike.y);
-        strikeCooldown = Random.Range(nextStrikeCooldown.x, nextStrikeCooldown.y);
-        justStruck = Time.time;
+
+        yield return new WaitForSeconds(pictureCooldown);
+
         readyForNextStrike = true;
+  
     }
 }

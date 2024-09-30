@@ -13,12 +13,16 @@ public class TakePicture : MonoBehaviour
 
     [SerializeField] private RenderTexture captureTexture;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
 
         rtc = GetComponent<RenderTextureCapture>();
+
+        
 
     }
 
