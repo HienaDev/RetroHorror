@@ -2,28 +2,29 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] private KeyCode front = KeyCode.W;
     [SerializeField] private KeyCode back = KeyCode.S;
     [SerializeField] private KeyCode left = KeyCode.A;
     [SerializeField] private KeyCode right = KeyCode.D;
     [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float gravity = 9.8f;
 
-    private Rigidbody rb;
+    private CharacterController characterController;
     private Vector3 velocity;
+    private float verticalSpeed = 0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody>(); 
+        characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Reset horizontal velocity each frame
         velocity = Vector3.zero;
 
-        if(Input.GetKey(front))
+        // Horizontal movement input
+        if (Input.GetKey(front))
         {
             velocity.z += 1;
         }
@@ -40,15 +41,31 @@ public class PlayerMovement : MonoBehaviour
             velocity.x += 1;
         }
 
-
-        // Normalize the velocity to ensure consistent movement speed in all directions
+        // Normalize and apply movement speed to horizontal velocity
         velocity = velocity.normalized * movementSpeed;
 
-        // Convert the velocity from local space to world space based on the player's current rotation
+        // Convert local movement direction to world space based on the player's rotation
         Vector3 worldVelocity = transform.TransformDirection(velocity);
 
-        // Apply the transformed velocity to the Rigidbody
-        rb.linearVelocity = worldVelocity;
+        // Apply gravity manually
+        if (characterController.isGrounded)
+        {
+            verticalSpeed = 0f;  // Reset vertical speed when grounded
+        }
+        else
+        {
+            verticalSpeed -= gravity * Time.deltaTime;  // Apply gravity
+        }
 
+        // Combine horizontal movement and vertical speed
+        worldVelocity.y = verticalSpeed;
+
+        // Move the character controller
+        characterController.Move(worldVelocity * Time.deltaTime);
+    }
+
+    public bool GetHasSpeed()
+    {
+        return (velocity != Vector3.zero && characterController.isGrounded);
     }
 }
