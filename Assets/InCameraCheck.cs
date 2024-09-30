@@ -10,7 +10,7 @@ public class InCameraCheck : MonoBehaviour
     [SerializeField] private float timerToCheckIfInCamera = 0.3f;
     private float justChecked;
 
-    [SerializeField] private float distance = 5f;
+    [SerializeField] private float distance = 3f;
 
     private TakePicture takePictureScript;
 
