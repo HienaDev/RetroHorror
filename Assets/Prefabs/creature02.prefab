@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  viewAngle: 120
+  viewAngle: 180
   viewDistance: 4
   minDistance: 0.5
   obstructionMask:
