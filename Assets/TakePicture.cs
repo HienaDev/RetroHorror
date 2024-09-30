@@ -27,6 +27,8 @@ public class TakePicture : MonoBehaviour
 
     private Coroutine savedCoroutine = null;
 
+    [SerializeField] private GameObject polaroidFullObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,8 @@ public class TakePicture : MonoBehaviour
 
     public void CameraShooting()
     {
+        if (!polaroidFullObject.activeSelf) polaroidFullObject.SetActive(true);
+
         rtc.GetLatestPhoto();
         poraloid.GetComponent<Renderer>().material.SetTexture("_BaseMap", rtc.toTexture2D(captureTexture));
         CheckIfProofAlreadyFound();

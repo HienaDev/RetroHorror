@@ -25,6 +25,10 @@ public class PhoneLogic : MonoBehaviour
 
     [SerializeField] private NPCSpawner npcSpawner;
 
+    [SerializeField] private GameObject heedMyCalls;
+    [SerializeField] private GameObject dontMove;
+    [SerializeField] private GameObject hide;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -78,6 +82,11 @@ public class PhoneLogic : MonoBehaviour
                 justRinged = Time.time;
                 phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
 
+
+                hide.SetActive(false);
+                dontMove.SetActive(false);
+                heedMyCalls.SetActive(false);
+
                 playerPos.ToggleMovement(true);
                 playerPos.GetComponentInChildren<Animator>().SetBool("Calling", false);
             }
@@ -100,6 +109,7 @@ public class PhoneLogic : MonoBehaviour
         if (firstCall)
         {
             firstCall = false;
+            heedMyCalls.SetActive(true);
             handPhoneSounds.PlayHeedMyCallSound();
         }
         else
@@ -108,11 +118,13 @@ public class PhoneLogic : MonoBehaviour
 
             if (random == 0)
             {
+                dontMove.SetActive(true);
                 handPhoneSounds.PlayDontMoveSound();
                 StartCoroutine(SpawnNpc(State.DontMove, 2f));
             }
             else if (random == 1)
             {
+                hide.SetActive(true);
                 handPhoneSounds.PlayHideSound();
                 StartCoroutine(SpawnNpc(State.DontMove, 5f));
             }

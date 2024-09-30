@@ -42,7 +42,7 @@ public class NPCSpawner : MonoBehaviour
         else if (state == State.DontMove)
         {
             // Step 1: Find a random position on the NavMesh for the NPC to spawn
-            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 7f, 10f);
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 3f, 7f);
 
             if (spawnPosition != Vector3.zero)
             {
