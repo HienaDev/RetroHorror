@@ -7317,28 +7317,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6951503947652129862, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
---- !u!64 &562134403
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3507587060848918510}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6951503947652129862, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
 --- !u!64 &564556730
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52088,7 +52066,6 @@ GameObject:
   - component: {fileID: 7794603851657901624}
   - component: {fileID: 1398684843158521583}
   - component: {fileID: 562134402}
-  - component: {fileID: 562134403}
   m_Layer: 0
   m_Name: Patio
   m_TagString: Untagged
