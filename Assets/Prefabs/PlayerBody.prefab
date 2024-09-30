@@ -125,16 +125,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ad1975af51e0443ae8e4c4610bcbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raycastDistance: 1
+  gravelLayer:
+    serializedVersion: 2
+    m_Bits: 256
   stepsSound:
-  - {fileID: 8300000, guid: 81f9602a0ef6f7a488f21a8c8b01faf4, type: 3}
-  - {fileID: 8300000, guid: 762321bea9032e54b81eb76122cb9ad7, type: 3}
-  - {fileID: 8300000, guid: 7a23ae9d649cbae468209f8a3fe167ad, type: 3}
-  - {fileID: 8300000, guid: 58e37e097c38e39459e9280031a836cb, type: 3}
-  - {fileID: 8300000, guid: bd0aed5034a753947a3cce1a3261baf2, type: 3}
+  - {fileID: 8300000, guid: cf0c4a9798977fd488532ca2d319e040, type: 3}
+  - {fileID: 8300000, guid: fba0e13fd39bab0498f2c4eb83198312, type: 3}
+  - {fileID: 8300000, guid: 12a11f5292847f043bf5c0c6295dba5a, type: 3}
+  - {fileID: 8300000, guid: f0bf22332d9138640be4042bd6d17933, type: 3}
+  - {fileID: 8300000, guid: 20f46df7fe1f452428dcbee9d7f11ec4, type: 3}
+  - {fileID: 8300000, guid: 73c8b0bf5cd44cb40ad6ff3de59e200d, type: 3}
+  - {fileID: 8300000, guid: 68558cd8b1aacdb4b95cbd68821605c3, type: 3}
+  - {fileID: 8300000, guid: 4ea39f9ace5661e4daa45cc5701d8be8, type: 3}
+  - {fileID: 8300000, guid: 16bd8584b0390414ca5f9f569bfd939f, type: 3}
+  - {fileID: 8300000, guid: 0a280267c7525004f9950d0f3f9a83f5, type: 3}
+  - {fileID: 8300000, guid: afa3153780f0bbd4cbda1aa63f03de65, type: 3}
+  - {fileID: 8300000, guid: 9767f76c000abde408794846c1d65fd1, type: 3}
+  - {fileID: 8300000, guid: 64e71c64e8ac52f4caf15ea716c65882, type: 3}
   stepsMixer: {fileID: 0}
   takePictureSound:
   - {fileID: 8300000, guid: b062a20861f66e2419d4b2def2adb9cc, type: 3}
   takePictureMixer: {fileID: 0}
+  stepsGravelSound:
+  - {fileID: 8300000, guid: 17ab63f192dd6b84ead7d1a058a43f44, type: 3}
+  - {fileID: 8300000, guid: 866a797aa6634b240b546fb2d214d442, type: 3}
+  - {fileID: 8300000, guid: 929048a088005a04c90a1118b34e2ed9, type: 3}
+  - {fileID: 8300000, guid: bf4f855a167383b4f9d2966622aed565, type: 3}
+  - {fileID: 8300000, guid: fe933750322681a4bab315d0d6205a18, type: 3}
+  - {fileID: 8300000, guid: 09d6f9269c24c944992e757b15acf5c4, type: 3}
+  - {fileID: 8300000, guid: 9efa95ef9b3dba24d8efecf00112aa06, type: 3}
+  - {fileID: 8300000, guid: b234e1bea2d4a5542ae780f198bb6c43, type: 3}
+  stepsGravelMixer: {fileID: 0}
   blockBreakingSound: []
   blockBreakingMixer: {fileID: 0}
   pickUpSound: []
@@ -142,6 +164,7 @@ MonoBehaviour:
   menuSound: []
   menuMixer: {fileID: 0}
   timeBetweenSteps: 0.7
+  OnGravel: 0
 --- !u!114 &6221611245588313717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +353,7 @@ GameObject:
   - component: {fileID: 3259256818473354046}
   - component: {fileID: 5865865473378761768}
   - component: {fileID: 3788087750495374882}
+  - component: {fileID: 6770133069928411736}
   m_Layer: 7
   m_Name: telefono (1)
   m_TagString: Untagged
@@ -405,6 +429,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6770133069928411736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979414032666985744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8eb3a119f106f14387d1024df9f404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringingSound: []
+  ringingMixer: {fileID: 0}
+  pickUpSound: []
+  pickUpMixer: {fileID: 0}
+  putDownSound: []
+  putDownMixer: {fileID: 0}
+  dontMoveSound:
+  - {fileID: 8300000, guid: 8d6db4dcbad556c45b940b882ce01ed2, type: 3}
+  - {fileID: 8300000, guid: 313db6509728b52469cb06e1f96f37d3, type: 3}
+  - {fileID: 8300000, guid: bcea1dd907d6b6249b3f3652c99a58e1, type: 3}
+  - {fileID: 8300000, guid: 9143ef3bc195ec34d90badeffad5547b, type: 3}
+  - {fileID: 8300000, guid: f25355118cf21204386accbbfca2397b, type: 3}
+  - {fileID: 8300000, guid: a9b5a12c796edbc41b7a5e2ff63a39d6, type: 3}
+  dontMoveMixer: {fileID: 0}
+  hideSound:
+  - {fileID: 8300000, guid: 0a32aea733c3fe442b1319af59db2ca1, type: 3}
+  hideMixer: {fileID: 0}
+  heedMyCallSound:
+  - {fileID: 8300000, guid: ed51e1fd2d021324cbcb8643f466f4a6, type: 3}
+  - {fileID: 8300000, guid: 8e2d465f0161b2b4b9545e94b06b4002, type: 3}
+  - {fileID: 8300000, guid: 6bdaeed7a1504d44e946b44e9eab9b51, type: 3}
+  - {fileID: 8300000, guid: 8c9b63141691cc54a86e8cc9141224c6, type: 3}
+  heedMyCallMixer: {fileID: 0}
+  timeBetweenRinging: 0
 --- !u!1 &1800848456204732447
 GameObject:
   m_ObjectHideFlags: 0
