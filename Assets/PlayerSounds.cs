@@ -5,6 +5,9 @@ using UnityEngine.Audio;
 
 public class PlayerSounds : MonoBehaviour
 {
+    [SerializeField] private float raycastDistance = 1f;  // The distance of the downward raycast
+    [SerializeField] private LayerMask gravelLayer;  // Layer mask for the gravel layer
+
     [SerializeField] private AudioClip[] stepsSound;
     private AudioSource audioSourceSteps;
     [SerializeField] private AudioMixerGroup stepsMixer;
@@ -12,6 +15,10 @@ public class PlayerSounds : MonoBehaviour
     [SerializeField] private AudioClip[] takePictureSound;
     private AudioSource audioSourceTakePicture;
     [SerializeField] private AudioMixerGroup takePictureMixer;
+
+    [SerializeField] private AudioClip[] stepsGravelSound;
+    private AudioSource audioSourceStepsGravel;
+    [SerializeField] private AudioMixerGroup stepsGravelMixer;
 
     [SerializeField] private AudioClip[] blockBreakingSound;
     private AudioSource audioSourceBlockBreaking;
@@ -30,31 +37,37 @@ public class PlayerSounds : MonoBehaviour
     private PlayerMovement playerScript;
 
     private float justStep;
+    public bool OnGravel = false;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSourceSteps = gameObject.AddComponent<AudioSource>();
-        //audioSourceSteps.outputAudioMixerGroup = stepsMixer;
+        audioSourceSteps.outputAudioMixerGroup = stepsMixer;
 
         audioSourceTakePicture = gameObject.AddComponent<AudioSource>();
-        //audioSourceTakePicture.outputAudioMixerGroup = takePictureMixer;
+        audioSourceTakePicture.outputAudioMixerGroup = takePictureMixer;
+
+        audioSourceStepsGravel = gameObject.AddComponent<AudioSource>();
+        audioSourceStepsGravel.outputAudioMixerGroup = stepsGravelMixer;
 
         audioSourceBlockBreaking = gameObject.AddComponent<AudioSource>();
-        //audioSourceBlockBreaking.outputAudioMixerGroup = blockBreakingMixer;
+        audioSourceBlockBreaking.outputAudioMixerGroup = blockBreakingMixer;
 
         audioSourcePickUp = gameObject.AddComponent<AudioSource>();
-        //audioSourcePickUp.outputAudioMixerGroup = pickUpMixer;
+        audioSourcePickUp.outputAudioMixerGroup = pickUpMixer;
 
         audioSourceMenu = gameObject.AddComponent<AudioSource>();
-        //audioSourceMenu.outputAudioMixerGroup = menuMixer;
+        audioSourceMenu.outputAudioMixerGroup = menuMixer;
 
         audioSourceTakePicture.spatialBlend = 1;
         audioSourceSteps.spatialBlend = 1;
+        audioSourceStepsGravel.spatialBlend = 1;
         audioSourceBlockBreaking.spatialBlend = 1;
 
         audioSourceTakePicture.volume = 0.2f;
-        audioSourceSteps.volume = 0.07f;
+        audioSourceSteps.volume = 0.1f;
+        audioSourceStepsGravel.volume = 0.1f;
         audioSourceBlockBreaking.volume = 0.4f;
         audioSourcePickUp.volume = 1f;
         audioSourceMenu.volume = 0.4f;
@@ -80,12 +93,35 @@ public class PlayerSounds : MonoBehaviour
             if (playerScript.GetHasSpeed())
             {
                 justStep = Time.time;
-                PlayStepsSound();
+                CheckIfOnGravel();
+                if (OnGravel)
+                    PlayStepsGravelSound();
+                else
+                    PlayStepsSound();
             }
         }
     }
 
+    void CheckIfOnGravel()
+    {
+        // Step 1: Cast a ray straight down from the object's position
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit hit;
 
+        // Step 2: Perform the raycast and check if it hits something on the gravel layer
+        if (Physics.Raycast(ray, out hit, raycastDistance, gravelLayer))
+        {
+            // The raycast hit an object on the "Gravel" layer
+            OnGravel = true;
+            Debug.Log("Standing on Gravel.");
+        }
+        else
+        {
+            // The raycast did not hit anything on the gravel layer
+            OnGravel = false;
+            Debug.Log("Not on Gravel.");
+        }
+    }
 
     public void PlayStepsSound()
     {
@@ -101,6 +137,14 @@ public class PlayerSounds : MonoBehaviour
         audioSourceTakePicture.pitch = Random.Range(0.95f, 1.05f);
 
         audioSourceTakePicture.Play();
+    }
+
+    public void PlayStepsGravelSound()
+    {
+        audioSourceStepsGravel.clip = stepsGravelSound[Random.Range(0, stepsGravelSound.Length)];
+        audioSourceStepsGravel.pitch = Random.Range(0.95f, 1.05f);
+
+        audioSourceStepsGravel.Play();
     }
 
     public void PlayBlockBreakingSound()

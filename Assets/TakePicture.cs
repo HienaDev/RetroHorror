@@ -47,11 +47,6 @@ public class TakePicture : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-        Debug.Log(savedCoroutine);
-    }
-
     private void CheckIfProofAlreadyFound()
     {
         foreach (GameObject check in proofsOnCamera)

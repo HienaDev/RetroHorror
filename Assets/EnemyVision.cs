@@ -76,7 +76,7 @@ public class EnemyVision : MonoBehaviour
             {
                 newDestination = randomPoint;
                 agent.SetDestination(newDestination);
-                Debug.Log($"NPC moving to {newDestination}");
+                //Debug.Log($"NPC moving to {newDestination}");
             }
             else
             {
