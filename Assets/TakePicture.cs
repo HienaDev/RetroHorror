@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TakePicture : MonoBehaviour
@@ -13,7 +16,16 @@ public class TakePicture : MonoBehaviour
 
     [SerializeField] private RenderTexture captureTexture;
 
-    
+    private HashSet<GameObject> proofsOnCamera = new HashSet<GameObject> ();
+    public HashSet<GameObject> ProofsOnCamera => proofsOnCamera;    
+    private List<GameObject> alreadyFoundProofs = new List<GameObject>();
+    private int proofCount = 0;
+
+    [SerializeField] private float timeToLastText = 2f;
+
+    [SerializeField] private TextMeshProUGUI text;
+
+    private Coroutine savedCoroutine = null;
 
     // Start is called before the first frame update
     void Start()
@@ -26,30 +38,76 @@ public class TakePicture : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        //if (Input.GetMouseButtonDown(0))
-        //{
-
-        //        CameraShooting();
-
-
-        //}
-
-    }
-
-
-
 
     public void CameraShooting()
     {
         rtc.GetLatestPhoto();
         poraloid.GetComponent<Renderer>().material.SetTexture("_BaseMap", rtc.toTexture2D(captureTexture));
+        CheckIfProofAlreadyFound();
     }
 
 
+    private void FixedUpdate()
+    {
+        Debug.Log(savedCoroutine);
+    }
+
+    private void CheckIfProofAlreadyFound()
+    {
+        foreach (GameObject check in proofsOnCamera)
+        {
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(check.transform.position, cam.transform.position - check.transform.position, out hit, Mathf.Infinity))
+            {
+                Debug.DrawRay(check.transform.position, cam.transform.position - check.transform.position, Color.blue);
+                Debug.Log("It hit: " + hit.collider.gameObject.name + " Position: " + hit.point);
+
+                if(hit.collider.gameObject == gameObject)
+                {
+                    if (alreadyFoundProofs.Contains(check))
+                    {
+                        if(savedCoroutine != null)
+                            StopCoroutine(savedCoroutine);
+
+                        savedCoroutine = StartCoroutine(ChangeText("Proof already found"));
+                    }
+                    else
+                    {
+                        if (savedCoroutine != null)
+                            StopCoroutine(savedCoroutine);
+
+                        proofCount++;
+                        alreadyFoundProofs.Add(check);
+                        savedCoroutine = StartCoroutine(ChangeText($"Proof found: {proofCount} out of 8"));
+                    }
+                }
+                else
+                    Debug.Log("Did not hit");
+            }
+        }
+    }
+
+    private IEnumerator ChangeText(string sentence)
+    {
+        text.text = sentence;
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 1f);
+        yield return new WaitForSeconds(timeToLastText);
+
+        float lerpValue = 1f;
+
+        while(lerpValue > -0.1f)
+        {
+            lerpValue -= Time.deltaTime;
+            text.color = new Color(text.color.r, text.color.g, text.color.b, lerpValue);
+            yield return null;
+        }
+
+        savedCoroutine = null;
+    }
+
+    public void AddToProofs(GameObject proof) => proofsOnCamera.Add(proof);
+
+    public void RemoveFromProofs(GameObject proof) => proofsOnCamera.Remove(proof);
 
 }
