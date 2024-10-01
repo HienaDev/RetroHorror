@@ -863,10 +863,15 @@ MonoBehaviour:
   interactionKey: 101
   phoneCooldown: {x: 45, y: 60}
   minimumDistanceForPhone: 12
-  minimumDistanceForInteraction: 3
+  minimumDistanceForInteraction: 1.5
   playerPos: {fileID: 0}
   handPhoneSounds: {fileID: 0}
   npcSpawner: {fileID: 3714677177427921380}
+  heedMyCalls: {fileID: 0}
+  dontMove: {fileID: 0}
+  hide: {fileID: 0}
+  pickUpPhone: {fileID: 0}
+  putDownPhone: {fileID: 0}
 --- !u!114 &3714677177427921380
 MonoBehaviour:
   m_ObjectHideFlags: 0

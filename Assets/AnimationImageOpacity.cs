@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Runtime.CompilerServices;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
+using System.Collections;
 using UnityEngine.UI;
 
-public class TextAnimationOpacity : MonoBehaviour
+public class AnimationImageOpacity : MonoBehaviour
 {
     [SerializeField] private float initialDelay = 0f;
     [SerializeField] private float fadeInDuration = 0.5f;
     [SerializeField] private float duration = 1f;
     [SerializeField] private float fadeOutDuration = 0.5f;
 
-    [SerializeField] private bool fadeOut = true;
-
-    private TextMeshProUGUI text;
+    [SerializeField] private bool fadeOut = false;
+    
+    private RawImage image;
 
     private IEnumerator coroutine = null;
 
@@ -22,7 +21,7 @@ public class TextAnimationOpacity : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        image = GetComponent<RawImage>();
 
         
     }
@@ -32,12 +31,11 @@ public class TextAnimationOpacity : MonoBehaviour
         coroutine = Animation();
 
         Debug.Log("on enable: " + coroutine);
-        if (coroutineRunning)
+        if(coroutineRunning)
         {
             Debug.Log("stopped coroutine");
-            
             StopCoroutine(coroutine);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, 0f);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
         }
         StartCoroutine(coroutine);
 
@@ -45,39 +43,40 @@ public class TextAnimationOpacity : MonoBehaviour
     }
 
 
+
     private IEnumerator Animation()
     {
+
         coroutineRunning = true;
 
         yield return new WaitForSeconds(initialDelay);
 
         float lerpValue = 0f;
 
-        while(lerpValue <= 1f)
+        while (lerpValue <= 1f)
         {
             lerpValue += Time.deltaTime / fadeInDuration;
-            text.color = new Color(text.color.r, text.color.g, text.color.b, lerpValue);
+            image.color = new Color(image.color.r, image.color.g, image.color.b, lerpValue);
             yield return null;
         }
 
 
+
         if(fadeOut)
         {
+
             yield return new WaitForSeconds(duration);
 
             while (lerpValue >= 0f)
             {
                 lerpValue -= Time.deltaTime / fadeOutDuration;
-                text.color = new Color(text.color.r, text.color.g, text.color.b, lerpValue);
+                image.color = new Color(image.color.r, image.color.g, image.color.b, lerpValue);
                 yield return null;
             }
 
             gameObject.SetActive(false);
         }
 
-
-
         coroutineRunning = false;
     }
-
 }

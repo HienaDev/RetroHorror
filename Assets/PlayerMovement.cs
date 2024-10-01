@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             // Combine horizontal movement and vertical speed
             worldVelocity.y = verticalSpeed;
 
-            Debug.Log(worldVelocity.magnitude);
+            //Debug.Log(worldVelocity.magnitude);
 
             // Move the character controller
             characterController.Move(worldVelocity * Time.deltaTime);

@@ -29,6 +29,9 @@ public class PhoneLogic : MonoBehaviour
     [SerializeField] private GameObject dontMove;
     [SerializeField] private GameObject hide;
 
+    [SerializeField] private GameObject pickUpPhone;
+    [SerializeField] private GameObject putDownPhone;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,7 +56,9 @@ public class PhoneLogic : MonoBehaviour
             standPhoneSounds.PlayRingingSound();
         }
 
-        if(Input.GetKeyDown(interactionKey) && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForInteraction)
+
+
+        if (Input.GetKeyDown(interactionKey) && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForInteraction)
         {
             if(needsPickingUp)
             {
@@ -65,6 +70,7 @@ public class PhoneLogic : MonoBehaviour
                 canHangUp = true;
                 standPhoneSounds.StopRingingSound();
                 standPhoneSounds.PlayPickUpSound();
+                
                 justRinged = Time.time;
                 phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
 
@@ -88,6 +94,35 @@ public class PhoneLogic : MonoBehaviour
             }
             
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForInteraction)
+        {
+            if(needsPickingUp)
+                pickUpPhone.SetActive(true);
+            else if(canHangUp)
+            {
+                pickUpPhone.SetActive(false);
+                putDownPhone.SetActive(true);
+            }
+            else
+            {
+                if(pickUpPhone.activeSelf)
+                    pickUpPhone.SetActive(false);
+                if (putDownPhone.activeSelf)
+                    putDownPhone.SetActive(false);
+            }
+        }
+        else
+        {
+            if (pickUpPhone.activeSelf)
+                pickUpPhone.SetActive(false);
+            if (putDownPhone.activeSelf)
+                putDownPhone.SetActive(false);
+        }
+            
     }
 
     private void NewPhoneCooldown()
