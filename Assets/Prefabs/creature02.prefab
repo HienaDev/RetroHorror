@@ -684,7 +684,11 @@ MonoBehaviour:
   stepsMixer: {fileID: 0}
   takePictureSound: []
   takePictureMixer: {fileID: 0}
-  stepsGravelSound: []
+  stepsGravelSound:
+  - {fileID: 8300000, guid: 62f8c605d87819440bf0fd802f714779, type: 3}
+  - {fileID: 8300000, guid: f7cc517655ca3f744be871fe9192a971, type: 3}
+  - {fileID: 8300000, guid: f93ba545f9728374f853f3c94a803e6f, type: 3}
+  - {fileID: 8300000, guid: 8f1ad44737130264fb436bf30494a8ce, type: 3}
   stepsGravelMixer: {fileID: 0}
   blockBreakingSound:
   - {fileID: 8300000, guid: 7764d1913147c994f8b12963f40049b7, type: 3}

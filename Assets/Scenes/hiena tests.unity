@@ -22478,7 +22478,7 @@ MonoBehaviour:
   stepsGravelSound: []
   stepsGravelMixer: {fileID: 0}
   blockBreakingSound:
-  - {fileID: 8300000, guid: 7764d1913147c994f8b12963f40049b7, type: 3}
+  - {fileID: 8300000, guid: 27b47263b87fdab4da32ddf563feb502, type: 3}
   blockBreakingMixer: {fileID: 0}
   pickUpSound: []
   pickUpMixer: {fileID: 0}
