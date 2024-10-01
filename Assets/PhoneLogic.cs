@@ -188,7 +188,7 @@ public class PhoneLogic : MonoBehaviour
             {
                 hide.SetActive(true);
                 handPhoneSounds.PlayHideSound();
-                StartCoroutine(SpawnNpc(State.DontMove, 5f));
+                StartCoroutine(SpawnNpc(State.Looking, 5f));
             }
         }
 
