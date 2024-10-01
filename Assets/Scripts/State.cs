@@ -5,6 +5,7 @@ public enum State
 
         DontMove,
         Looking,
-        Chase
+        Chase,
+        Here
     
 }

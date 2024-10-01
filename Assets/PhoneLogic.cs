@@ -5,7 +5,7 @@ public class PhoneLogic : MonoBehaviour
 {
     [SerializeField] private KeyCode interactionKey = KeyCode.E;
 
-    [SerializeField] private Vector2 phoneCooldown = new Vector2 (30, 50);
+    [SerializeField] private Vector2 phoneCooldown = new Vector2(30, 50);
     private float phoneCurrentCooldown;
 
     [SerializeField] private float phoneRingMaxDuration = 20f;
@@ -13,7 +13,7 @@ public class PhoneLogic : MonoBehaviour
     private bool phonePickedUp = false;
     [SerializeField] private float timeToSpawnMoreMonsters = 5f;
     private float justSpawned = Mathf.Infinity;
-    
+
 
     [SerializeField] private float minimumDistanceForPhone = 15f;
     [SerializeField] private float minimumDistanceForInteraction = 3f;
@@ -41,6 +41,8 @@ public class PhoneLogic : MonoBehaviour
 
     private bool badMonsterSpawned = false;
 
+    private bool stopSpawnning = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,79 +63,84 @@ public class PhoneLogic : MonoBehaviour
     void Update()
     {
 
-        if(Time.time - callStarted > phoneRingMaxDuration && !phonePickedUp)
+        if (!stopSpawnning)
         {
-            if(Time.time - justSpawned > timeToSpawnMoreMonsters)
+            if (Time.time - callStarted > phoneRingMaxDuration && !phonePickedUp)
             {
-                justSpawned = Time.time;
-                npcSpawner.SpawnNPC(State.Chase);
+                if (Time.time - justSpawned > timeToSpawnMoreMonsters)
+                {
+                    justSpawned = Time.time;
+                    npcSpawner.SpawnNPC(State.Chase);
+                    standPhoneSounds.StopRingingSound();
+                }
+
             }
-            
-        }
 
-        if (Time.time - justRinged > phoneCurrentCooldown && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForPhone)
-        {
-            NewPhoneCooldown();
-            callStarted = Time.time;
-            phonePickedUp = false;
-            needsPickingUp = true;
-            standPhoneSounds.PlayRingingSound();
-        }
-
-
-
-        if (Input.GetKeyDown(interactionKey) && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForInteraction)
-        {
-            if(needsPickingUp)
-            {
-                phonePickedUp = true;
-                NewPhoneCooldown();
-
-
-                needsPickingUp = false;
-                canHangUp = true;
-                standPhoneSounds.StopRingingSound();
-                standPhoneSounds.PlayPickUpSound();
-                
-                justRinged = Time.time;
-                phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
-
-                playerPos.ToggleMovement(false);
-                playerPos.GetComponentInChildren<Animator>().SetBool("Calling", true);
-
-                StartCoroutine(MonsterSpawnLogic());
-            }
-            else if(canHangUp)
+            if (Time.time - justRinged > phoneCurrentCooldown && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForPhone)
             {
                 NewPhoneCooldown();
-
-                canHangUp = false;
-                standPhoneSounds.PlayPutDownSound();
-                justRinged = Time.time;
-                phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
-
-
-                playerPos.ToggleMovement(true);
-                playerPos.GetComponentInChildren<Animator>().SetBool("Calling", false);
+                callStarted = Time.time;
+                phonePickedUp = false;
+                needsPickingUp = true;
+                standPhoneSounds.PlayRingingSound();
             }
-            
+
+
+
+            if (Input.GetKeyDown(interactionKey) && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForInteraction)
+            {
+                if (needsPickingUp)
+                {
+                    phonePickedUp = true;
+                    NewPhoneCooldown();
+
+
+                    needsPickingUp = false;
+                    canHangUp = true;
+                    standPhoneSounds.StopRingingSound();
+                    standPhoneSounds.PlayPickUpSound();
+
+                    justRinged = Time.time;
+                    phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
+
+                    playerPos.ToggleMovement(false);
+                    playerPos.GetComponentInChildren<Animator>().SetBool("Calling", true);
+
+                    StartCoroutine(MonsterSpawnLogic());
+                }
+                else if (canHangUp)
+                {
+                    NewPhoneCooldown();
+
+                    canHangUp = false;
+                    standPhoneSounds.PlayPutDownSound();
+                    justRinged = Time.time;
+                    phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
+
+
+                    playerPos.ToggleMovement(true);
+                    playerPos.GetComponentInChildren<Animator>().SetBool("Calling", false);
+                }
+
+            }
         }
+
     }
 
     private void FixedUpdate()
     {
         if (Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForInteraction)
         {
-            if(needsPickingUp)
+            if (needsPickingUp)
                 pickUpPhone.SetActive(true);
-            else if(canHangUp)
+            else if (canHangUp)
             {
                 pickUpPhone.SetActive(false);
                 putDownPhone.SetActive(true);
             }
             else
             {
-                if(pickUpPhone.activeSelf)
+                if (pickUpPhone.activeSelf)
                     pickUpPhone.SetActive(false);
                 if (putDownPhone.activeSelf)
                     putDownPhone.SetActive(false);
@@ -146,12 +153,12 @@ public class PhoneLogic : MonoBehaviour
             if (putDownPhone.activeSelf)
                 putDownPhone.SetActive(false);
         }
-            
+
     }
 
     private void NewPhoneCooldown()
     {
-        
+
         justRinged = Time.time;
         phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
         Debug.Log("new cooldown is: " + phoneCurrentCooldown);
@@ -201,4 +208,6 @@ public class PhoneLogic : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, minimumDistanceForInteraction);
     }
+
+    public void StopSpawning() => stopSpawnning = true;
 }

@@ -39,6 +39,8 @@ public class PlayerSounds : MonoBehaviour
     private float justStep;
     public bool OnGravel = false;
 
+    [SerializeField] private bool isMonter = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +89,7 @@ public class PlayerSounds : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - justStep > timeBetweenSteps)
+        if (Time.time - justStep > timeBetweenSteps && !isMonter)
         {
             
             if (playerScript.GetHasSpeed())

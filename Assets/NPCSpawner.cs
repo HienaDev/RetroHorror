@@ -84,6 +84,25 @@ public class NPCSpawner : MonoBehaviour
                 Debug.LogError("Failed to find a valid NavMesh position to spawn NPC.");
             }
         }
+        else if (state == State.Chase)
+        {
+            // Step 1: Find a random position on the NavMesh for the NPC to spawn
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 3f, 6f);
+
+            if (spawnPosition != Vector3.zero)
+            {
+                // Step 2: Instantiate the NPC
+                GameObject npc = Instantiate(npcPrefab, spawnPosition, Quaternion.identity);
+                npc.GetComponent<EnemyVision>().SetPlayer(player);
+                npc.GetComponent<EnemyVision>().SetState(state);
+                npc.GetComponent<EnemyVision>().StartRoaming(spawnPosition);
+
+            }
+            else
+            {
+                Debug.LogError("Failed to find a valid NavMesh position to spawn NPC.");
+            }
+        }
     }
 
     Vector3 GetRandomPointOnNavMesh(Vector3 center, float minRadius, float maxRadius)

@@ -18807,6 +18807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBody
       objectReference: {fileID: 0}
+    - target: {fileID: 521442760874421472, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1709507576}
     - target: {fileID: 1347636554427120524, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: phoneOnStand
       value: 
@@ -20490,6 +20494,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 845781986406482173, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
+--- !u!114 &1709507576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3714677177427921380, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
+  m_PrefabInstance: {fileID: 4653714238728559448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62942ab89a2dde43ac8a27e8eeffa46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1710918136
 MeshCollider:
   m_ObjectHideFlags: 0

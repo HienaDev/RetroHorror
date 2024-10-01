@@ -32,6 +32,8 @@ public class TakePicture : MonoBehaviour
 
     public bool GotAllProof { get; private set; }
 
+    [SerializeField] private NPCSpawner spawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,6 @@ public class TakePicture : MonoBehaviour
         rtc = GetComponent<RenderTextureCapture>();
 
         GotAllProof = false;
-
     }
 
 
@@ -87,6 +88,12 @@ public class TakePicture : MonoBehaviour
                         alreadyFoundProofs.Add(check);
 
                         proofCount++;
+
+                        if(proofCount >= proofsNeededToWin * 0.625)
+                        {
+                            spawner.SpawnNPC(State.Here);
+                            spawner.GetComponent<PhoneLogic>().StopSpawning();
+                        }
                         
                         savedCoroutine = StartCoroutine(ChangeText($"Proof found: {proofCount} out of {proofsNeededToWin}"));
                     }

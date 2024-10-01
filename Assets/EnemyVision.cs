@@ -47,7 +47,7 @@ public class EnemyVision : MonoBehaviour
     {
         if (CanSeePlayer())
         {
-            if (currentState == State.Looking)
+            if (currentState == State.Looking || currentState == State.Here)
             {
                 currentState = State.Chase;
                 GetComponentInChildren<Animator>().SetTrigger("Crawl");
