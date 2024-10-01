@@ -20,7 +20,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnNPC(State.Looking);
+
     }
 
     public void SpawnNPC(State state)
