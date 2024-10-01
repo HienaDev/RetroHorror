@@ -1238,6 +1238,8 @@ MonoBehaviour:
   jumpScareRotationDuration: 0.2
   timeAlive: 45
   timeAliveForDontMove: 5
+  timeToChasePlayer: 90
+  monsterGoneSound: {fileID: 220217549809704038, guid: 239af73810f9dc7448fca1bfd4b3f608, type: 3}
 --- !u!1 &5115914133173719207
 GameObject:
   m_ObjectHideFlags: 0

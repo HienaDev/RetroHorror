@@ -22,12 +22,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Reset horizontal velocity each frame
+        velocity = Vector3.zero;
+        
+        
+
         if (canMove)
         {
 
 
-            // Reset horizontal velocity each frame
-            velocity = Vector3.zero;
+            
 
             // Horizontal movement input
             if (Input.GetKey(front))
@@ -71,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
             // Move the character controller
             characterController.Move(worldVelocity * Time.deltaTime);
         }
+
+        Debug.Log(velocity.magnitude);
     }
 
     public bool GetHasSpeed()
@@ -78,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         return (velocity != Vector3.zero && characterController.isGrounded);
     }
 
-    public bool IsMoving() => worldVelocity.magnitude > 1f;
+    public bool IsMoving() => velocity.magnitude > 1f;
 
     public void ToggleMovement(bool toggle) => canMove = toggle;
 }

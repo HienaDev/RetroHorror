@@ -25,9 +25,12 @@ public class EnemyVision : MonoBehaviour
 
     [SerializeField] private float timeAlive = 20f;
     [SerializeField] private float timeAliveForDontMove = 5f;
+    [SerializeField] private float  timeToChasePlayer = 90f;
     private float justSpawned = Mathf.Infinity;
 
     private bool canDie = false;
+
+    [SerializeField] private GameObject monsterGoneSound;
 
     private void Start()
     {
@@ -41,6 +44,8 @@ public class EnemyVision : MonoBehaviour
             GetComponentInChildren<Animator>().SetTrigger("Crawl");
             npcAgent.speed = 5f;
         }
+
+        Debug.Log("state is: " + currentState);
     }
 
     private void FixedUpdate()
@@ -80,7 +85,12 @@ public class EnemyVision : MonoBehaviour
         if (Time.time - justSpawned > timeAlive)
         {
             if (currentState == State.Looking || (currentState == State.DontMove && canDie))
+            {
+                GameObject temp = Instantiate(monsterGoneSound);
+                temp.transform.position = gameObject.transform.position;
                 Destroy(gameObject);
+            }
+                
         }
 
 
@@ -117,6 +127,7 @@ public class EnemyVision : MonoBehaviour
                     timeAlive = timeAliveForDontMove;
                     justSpawned = Time.time;
                 }
+
                 StartCoroutine(SetNextDestination(agent, agent.transform.position, minMoveDistance));
             }
 
@@ -131,23 +142,30 @@ public class EnemyVision : MonoBehaviour
     {
         Vector3 newDestination = Vector3.zero;
 
-        // Keep trying to find a valid destination that's far enough from current position
-        while (newDestination == Vector3.zero)
+        int randomDecision = Random.Range(0, 2);
+        if (randomDecision == 0 || Time.time - justSpawned > timeToChasePlayer)
+            ChasePlayer();
+        else
         {
-            Vector3 randomPoint = GetRandomPointOnNavMesh(currentPosition, minMoveDistance, maxMoveDistance);
-            if (randomPoint != Vector3.zero)
+            // Keep trying to find a valid destination that's far enough from current position
+            while (newDestination == Vector3.zero)
             {
-                newDestination = randomPoint;
-                agent.SetDestination(newDestination);
-                //Debug.Log($"NPC moving to {newDestination}");
-            }
-            else
-            {
-                Debug.LogError("Failed to find a valid move destination.");
-            }
+                Vector3 randomPoint = GetRandomPointOnNavMesh(currentPosition, minMoveDistance, maxMoveDistance);
+                if (randomPoint != Vector3.zero)
+                {
+                    newDestination = randomPoint;
+                    agent.SetDestination(newDestination);
+                    //Debug.Log($"NPC moving to {newDestination}");
+                }
+                else
+                {
+                    Debug.LogError("Failed to find a valid move destination.");
+                }
 
-            yield return null;
+                yield return null;
+            }
         }
+        
     }
 
     Vector3 GetRandomPointOnNavMesh(Vector3 center, float minRadius, float maxRadius)
