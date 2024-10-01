@@ -60,6 +60,8 @@ public class EnemyVision : MonoBehaviour
             Debug.Log("Player is out of sight.");
         }
 
+        CheckArrival(npcAgent);
+
         if (currentState == State.Chase)
         {
             ChasePlayer();
@@ -81,7 +83,7 @@ public class EnemyVision : MonoBehaviour
                 Destroy(gameObject);
         }
 
-        CheckArrival(npcAgent);
+
     }
 
     public void StartRoaming(Vector3 spawnPosition)
