@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FirstPersonCamera : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class FirstPersonCamera : MonoBehaviour
 
     private bool canUseCamera = true;
 
+    [SerializeField] private GameObject slider;
+
     // Start is called before the first frame update
     void Start()
     {
         // Lock the cursor to the center of the screen and make it invisible
-        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -41,4 +44,10 @@ public class FirstPersonCamera : MonoBehaviour
     }
 
     public void ToggleCamera(bool toggle) => canUseCamera = toggle;
+
+    public void ChangeCameraSensitivity()
+    {
+        mouseSensitivity = Mathf.Lerp(50, 1000, slider.GetComponent<Slider>().value);
+        Debug.Log(mouseSensitivity);
+    }
 }
