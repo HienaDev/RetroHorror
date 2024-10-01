@@ -686,7 +686,8 @@ MonoBehaviour:
   takePictureMixer: {fileID: 0}
   stepsGravelSound: []
   stepsGravelMixer: {fileID: 0}
-  blockBreakingSound: []
+  blockBreakingSound:
+  - {fileID: 8300000, guid: 7764d1913147c994f8b12963f40049b7, type: 3}
   blockBreakingMixer: {fileID: 0}
   pickUpSound: []
   pickUpMixer: {fileID: 0}
@@ -694,6 +695,7 @@ MonoBehaviour:
   menuMixer: {fileID: 0}
   timeBetweenSteps: 0
   OnGravel: 0
+  isMonter: 1
 --- !u!1 &3360067327863200882
 GameObject:
   m_ObjectHideFlags: 0

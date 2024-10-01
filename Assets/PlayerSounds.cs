@@ -70,7 +70,7 @@ public class PlayerSounds : MonoBehaviour
         audioSourceTakePicture.volume = 0.2f;
         audioSourceSteps.volume = 0.1f;
         audioSourceStepsGravel.volume = 0.1f;
-        audioSourceBlockBreaking.volume = 0.4f;
+        audioSourceBlockBreaking.volume = 2f;
         audioSourcePickUp.volume = 1f;
         audioSourceMenu.volume = 0.4f;
 
