@@ -33,6 +33,7 @@ public class TakePicture : MonoBehaviour
     public bool GotAllProof { get; private set; }
 
     [SerializeField] private NPCSpawner spawner;
+    private bool badGuySpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -89,8 +90,9 @@ public class TakePicture : MonoBehaviour
 
                         proofCount++;
 
-                        if(proofCount >= proofsNeededToWin * 0.625)
+                        if(proofCount >= proofsNeededToWin * 0.625 && !badGuySpawned)
                         {
+                            badGuySpawned = true;
                             spawner.SpawnNPC(State.Here);
                             spawner.GetComponent<PhoneLogic>().StopSpawning();
                         }
