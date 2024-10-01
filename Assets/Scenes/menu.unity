@@ -10689,7 +10689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1634ecfdb8e0b1846a7c4f671cfaf949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: hiena pathfinding
+  sceneName: hiena tests
 --- !u!95 &654005008
 Animator:
   serializedVersion: 7
