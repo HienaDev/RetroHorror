@@ -32,7 +32,6 @@ public class LightningStrike : MonoBehaviour
         intensityNextStrike = Random.Range(intensityStrike.x, intensityStrike.y);
         timeToNextStrike = Random.Range(timeToLastStrike.x, timeToLastStrike.y);
 
-
     }
 
     // Update is called once per frame
