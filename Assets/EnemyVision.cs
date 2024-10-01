@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using static UnityEngine.Rendering.VirtualTexturing.Debugging;
+using static UnityEngine.GraphicsBuffer;
 public class EnemyVision : MonoBehaviour
 {
     public Transform player; // Reference to the player's transform
@@ -13,6 +14,9 @@ public class EnemyVision : MonoBehaviour
     public float minMoveDistance = 15f; // Minimum distance NPC should move from spawn point
     public float maxMoveDistance = 20f; // Minimum distance NPC should move from spawn point
     public float checkInterval = 1f;    // How often to check if the NPC reached its destination
+
+    [SerializeField] private float agentStoppingDistance = 1f;
+    [SerializeField] private float jumpScareRotationDuration = 0.2f;
 
     private State currentState;
 
@@ -83,6 +87,7 @@ public class EnemyVision : MonoBehaviour
     public void StartRoaming(Vector3 spawnPosition)
     {
         npcAgent = GetComponent<NavMeshAgent>();
+        npcAgent.stoppingDistance = agentStoppingDistance;
         StartCoroutine(SetNextDestination(npcAgent, spawnPosition, minMoveDistance));
     }
 
@@ -92,20 +97,33 @@ public class EnemyVision : MonoBehaviour
         // Step 4: Check if the NPC has arrived at the destination
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !agent.hasPath)
         {
-            // Step 5: Once the NPC arrives, find a new destination
-            Debug.Log("NPC arrived at destination. Finding new destination...");
-            if (currentState == State.DontMove)
+            if(currentState == State.Chase)
             {
-                canDie = true;
-                timeAlive = timeAliveForDontMove;
-                justSpawned = Time.time;
+                player.GetComponent<PlayerMovement>().ToggleMovement(false);
+                player.GetComponentInChildren<FirstPersonCamera>().ToggleCamera(false);
+                player.GetComponentInChildren<TriggerJumpScareScript>().JumpScare();
+
+                Destroy(gameObject, 0.1f);
             }
-            StartCoroutine(SetNextDestination(agent, agent.transform.position, minMoveDistance));
+            else
+            {
+                // Step 5: Once the NPC arrives, find a new destination
+                Debug.Log("NPC arrived at destination. Finding new destination...");
+                if (currentState == State.DontMove)
+                {
+                    canDie = true;
+                    timeAlive = timeAliveForDontMove;
+                    justSpawned = Time.time;
+                }
+                StartCoroutine(SetNextDestination(agent, agent.transform.position, minMoveDistance));
+            }
+
         }
 
 
 
     }
+
 
     IEnumerator SetNextDestination(NavMeshAgent agent, Vector3 currentPosition, float minMoveDistance)
     {
@@ -197,5 +215,9 @@ public class EnemyVision : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, minMoveDistance);
 
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, agentStoppingDistance);
+
     }
+
 }
