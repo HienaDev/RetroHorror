@@ -19,6 +19,7 @@ public class TakePicture : MonoBehaviour
     private HashSet<GameObject> proofsOnCamera = new HashSet<GameObject> ();
     public HashSet<GameObject> ProofsOnCamera => proofsOnCamera;    
     private List<GameObject> alreadyFoundProofs = new List<GameObject>();
+    [SerializeField] private int proofsNeededToWin = 8;
     private int proofCount = 0;
 
     [SerializeField] private float timeToLastText = 2f;
@@ -76,9 +77,15 @@ public class TakePicture : MonoBehaviour
                         if (savedCoroutine != null)
                             StopCoroutine(savedCoroutine);
 
-                        proofCount++;
                         alreadyFoundProofs.Add(check);
-                        savedCoroutine = StartCoroutine(ChangeText($"Proof found: {proofCount} out of 8"));
+
+                        proofCount++;
+                        if(proofCount >= proofsNeededToWin)
+                        {
+                            savedCoroutine = StartCoroutine(ChangeText($"All proofs found. Get to the front door!"));
+                        }
+                        else
+                            savedCoroutine = StartCoroutine(ChangeText($"Proof found: {proofCount} out of {proofsNeededToWin}"));
                     }
                 }
                 else
