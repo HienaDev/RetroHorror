@@ -32,6 +32,8 @@ public class EnemyVision : MonoBehaviour
 
     [SerializeField] private GameObject monsterGoneSound;
 
+    [SerializeField] private GameObject meshObject;
+
     private void Start()
     {
         justSpawned = Time.time;
@@ -50,6 +52,16 @@ public class EnemyVision : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if ((Input.GetKeyDown(KeyCode.P)))
+        {
+            int layerSeeThrough = LayerMask.NameToLayer("SeeThroughWall");
+            if(meshObject.layer != layerSeeThrough)
+                meshObject.layer = layerSeeThrough;
+            else
+                meshObject.layer = LayerMask.NameToLayer("Default");
+        }
+
         if (CanSeePlayer())
         {
             if (currentState == State.Looking || currentState == State.Here)
