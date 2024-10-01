@@ -613,6 +613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7664711698413247997}
   - component: {fileID: 2622324870058816111}
+  - component: {fileID: 4158921702860252649}
   m_Layer: 0
   m_Name: MonsterMesh
   m_TagString: Untagged
@@ -659,6 +660,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4158921702860252649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270209496444896916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ad1975af51e0443ae8e4c4610bcbee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 1
+  gravelLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  stepsSound:
+  - {fileID: 8300000, guid: 62f8c605d87819440bf0fd802f714779, type: 3}
+  - {fileID: 8300000, guid: f7cc517655ca3f744be871fe9192a971, type: 3}
+  - {fileID: 8300000, guid: f93ba545f9728374f853f3c94a803e6f, type: 3}
+  - {fileID: 8300000, guid: 8f1ad44737130264fb436bf30494a8ce, type: 3}
+  stepsMixer: {fileID: 0}
+  takePictureSound: []
+  takePictureMixer: {fileID: 0}
+  stepsGravelSound: []
+  stepsGravelMixer: {fileID: 0}
+  blockBreakingSound: []
+  blockBreakingMixer: {fileID: 0}
+  pickUpSound: []
+  pickUpMixer: {fileID: 0}
+  menuSound: []
+  menuMixer: {fileID: 0}
+  timeBetweenSteps: 0
+  OnGravel: 0
 --- !u!1 &3360067327863200882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1202,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1197,7 +1232,7 @@ MonoBehaviour:
   minMoveDistance: 15
   maxMoveDistance: 20
   checkInterval: 1
-  agentStoppingDistance: 2
+  agentStoppingDistance: 0
   jumpScareRotationDuration: 0.2
   timeAlive: 20
   timeAliveForDontMove: 5
