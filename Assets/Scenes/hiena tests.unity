@@ -4195,7 +4195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6a4459c2ec13a47bfa123ea5726f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameWinScreen: {fileID: 0}
+  gameWinScreen: {fileID: 1209968961}
 --- !u!65 &391127868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17734,6 +17734,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1120467117887433911, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
+--- !u!1 &1209968961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4798839731587925121, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+  m_PrefabInstance: {fileID: 1559369816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1215722627
 MeshCollider:
   m_ObjectHideFlags: 0

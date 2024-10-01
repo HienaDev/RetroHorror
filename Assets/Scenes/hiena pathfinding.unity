@@ -58891,18 +58891,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1015893147}
-    - target: {fileID: 3714677177427921380, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
-      propertyPath: spawnHeight
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714677177427921380, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
-      propertyPath: maxSpawnRadius
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3714677177427921380, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
-      propertyPath: minSpawnRadius
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5280286976361170540, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.665
@@ -58971,10 +58959,6 @@ PrefabInstance:
       propertyPath: handPhoneSounds
       value: 
       objectReference: {fileID: 283989373}
-    - target: {fileID: 7623525396653558470, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
-      propertyPath: phoneCooldown.x
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 7646472492617012169, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
       propertyPath: m_Name
       value: Telefono con cable
