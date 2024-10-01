@@ -65,7 +65,11 @@ public class TakePicture : MonoBehaviour
 
                 if(hit.collider.gameObject == gameObject)
                 {
-                    if (alreadyFoundProofs.Contains(check))
+                    if (proofCount >= proofsNeededToWin)
+                    {
+                        savedCoroutine = StartCoroutine(ChangeText($"All proofs found. Get to the front door!"));
+                    }
+                    else if (alreadyFoundProofs.Contains(check))
                     {
                         if(savedCoroutine != null)
                             StopCoroutine(savedCoroutine);
@@ -80,12 +84,8 @@ public class TakePicture : MonoBehaviour
                         alreadyFoundProofs.Add(check);
 
                         proofCount++;
-                        if(proofCount >= proofsNeededToWin)
-                        {
-                            savedCoroutine = StartCoroutine(ChangeText($"All proofs found. Get to the front door!"));
-                        }
-                        else
-                            savedCoroutine = StartCoroutine(ChangeText($"Proof found: {proofCount} out of {proofsNeededToWin}"));
+                        
+                        savedCoroutine = StartCoroutine(ChangeText($"Proof found: {proofCount} out of {proofsNeededToWin}"));
                     }
                 }
                 else
