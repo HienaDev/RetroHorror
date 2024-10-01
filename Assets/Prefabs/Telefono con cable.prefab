@@ -862,6 +862,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionKey: 101
   phoneCooldown: {x: 45, y: 60}
+  phoneRingMaxDuration: 20
+  timeToSpawnMoreMonsters: 15
   minimumDistanceForPhone: 12
   minimumDistanceForInteraction: 1.5
   playerPos: {fileID: 0}
@@ -886,7 +888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 4922548625144104067, guid: 5c7447a8b1230d546b31f543a72c9d4b, type: 3}
   minSpawnRadius: 7
-  maxSpawnRadius: 20
+  maxSpawnRadius: 12
+  spawnHeight: -7
   player: {fileID: 0}
 --- !u!1 &7964658635922833363
 GameObject:

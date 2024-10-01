@@ -31,6 +31,12 @@ public class EnemyVision : MonoBehaviour
 
         if (currentState == State.DontMove)
             ChasePlayer();
+
+        if (currentState == State.Chase)
+        {
+            GetComponentInChildren<Animator>().SetTrigger("Crawl");
+            npcAgent.speed = 5f;
+        }
     }
 
     private void FixedUpdate()

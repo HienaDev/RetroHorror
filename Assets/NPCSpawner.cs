@@ -9,12 +9,19 @@ public class NPCSpawner : MonoBehaviour
     public float minSpawnRadius = 10f;  // Minimum distance from spawner for NPC
     public float maxSpawnRadius = 30f;  // Maximum distance from spawner for NPC
 
+
+    [SerializeField] private float spawnHeight = -3f;
+
+
     private NavMeshAgent npcAgent;  // Reference to NPC's NavMeshAgent
     [SerializeField] private Transform player;
     private Vector3 currentDestination;
 
-    
 
+    private void Start()
+    {
+        SpawnNPC(State.Looking);
+    }
 
     public void SpawnNPC(State state)
     {
@@ -23,7 +30,7 @@ public class NPCSpawner : MonoBehaviour
         {
 
             // Step 1: Find a random position on the NavMesh for the NPC to spawn
-            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, minSpawnRadius, maxSpawnRadius);
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z), minSpawnRadius, maxSpawnRadius);
 
             if (spawnPosition != Vector3.zero)
             {
@@ -42,7 +49,26 @@ public class NPCSpawner : MonoBehaviour
         else if (state == State.DontMove)
         {
             // Step 1: Find a random position on the NavMesh for the NPC to spawn
-            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 3f, 7f);
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 3f, 6f);
+
+            if (spawnPosition != Vector3.zero)
+            {
+                // Step 2: Instantiate the NPC
+                GameObject npc = Instantiate(npcPrefab, spawnPosition, Quaternion.identity);
+                npc.GetComponent<EnemyVision>().SetPlayer(player);
+                npc.GetComponent<EnemyVision>().SetState(state);
+                npc.GetComponent<EnemyVision>().StartRoaming(spawnPosition);
+
+            }
+            else
+            {
+                Debug.LogError("Failed to find a valid NavMesh position to spawn NPC.");
+            }
+        }
+        else if (state == State.Chase)
+        {
+            // Step 1: Find a random position on the NavMesh for the NPC to spawn
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 3f, 6f);
 
             if (spawnPosition != Vector3.zero)
             {
@@ -73,7 +99,9 @@ public class NPCSpawner : MonoBehaviour
                 float distanceFromCenter = Vector3.Distance(center, hit.position);
                 if (distanceFromCenter >= minRadius) // Ensure it's outside the minimum radius
                 {
-                    return hit.position;
+                    if(!(hit.position.x > 5.5f && hit.position.y > 3.5f))
+                        if(hit.position.y < 7f)
+                            return hit.position;
                 }
             }
         }
@@ -88,9 +116,9 @@ public class NPCSpawner : MonoBehaviour
     {
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, maxSpawnRadius);
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z), maxSpawnRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, minSpawnRadius);
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z), minSpawnRadius);
     }
 }

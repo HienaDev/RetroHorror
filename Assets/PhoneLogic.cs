@@ -8,6 +8,13 @@ public class PhoneLogic : MonoBehaviour
     [SerializeField] private Vector2 phoneCooldown = new Vector2 (30, 50);
     private float phoneCurrentCooldown;
 
+    [SerializeField] private float phoneRingMaxDuration = 20f;
+    private float callStarted = Mathf.Infinity;
+    private bool phonePickedUp = false;
+    [SerializeField] private float timeToSpawnMoreMonsters = 5f;
+    private float justSpawned = Mathf.Infinity;
+    
+
     [SerializeField] private float minimumDistanceForPhone = 15f;
     [SerializeField] private float minimumDistanceForInteraction = 3f;
 
@@ -32,11 +39,15 @@ public class PhoneLogic : MonoBehaviour
     [SerializeField] private GameObject pickUpPhone;
     [SerializeField] private GameObject putDownPhone;
 
+    private bool badMonsterSpawned = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         phoneCurrentCooldown = Random.Range(phoneCooldown.x, phoneCooldown.y);
         justRinged = phoneCurrentCooldown;
+        callStarted = Time.time;
+        justSpawned = Time.time;
 
         standPhoneSounds = GetComponent<PhoneSounds>();
 
@@ -49,9 +60,22 @@ public class PhoneLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Time.time - callStarted > phoneRingMaxDuration && !phonePickedUp)
+        {
+            if(Time.time - justSpawned > timeToSpawnMoreMonsters)
+            {
+                justSpawned = Time.time;
+                npcSpawner.SpawnNPC(State.Chase);
+            }
+            
+        }
+
         if (Time.time - justRinged > phoneCurrentCooldown && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForPhone)
         {
             NewPhoneCooldown();
+            callStarted = Time.time;
+            phonePickedUp = false;
             needsPickingUp = true;
             standPhoneSounds.PlayRingingSound();
         }
@@ -62,7 +86,7 @@ public class PhoneLogic : MonoBehaviour
         {
             if(needsPickingUp)
             {
-
+                phonePickedUp = true;
                 NewPhoneCooldown();
 
 
