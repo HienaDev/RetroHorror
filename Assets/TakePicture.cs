@@ -30,6 +30,8 @@ public class TakePicture : MonoBehaviour
 
     [SerializeField] private GameObject polaroidFullObject;
 
+    public bool GotAllProof { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class TakePicture : MonoBehaviour
 
         rtc = GetComponent<RenderTextureCapture>();
 
-        
+        GotAllProof = false;
 
     }
 
@@ -67,6 +69,7 @@ public class TakePicture : MonoBehaviour
                 {
                     if (proofCount >= proofsNeededToWin)
                     {
+                        GotAllProof = true;
                         savedCoroutine = StartCoroutine(ChangeText($"All proofs found. Get to the front door!"));
                     }
                     else if (alreadyFoundProofs.Contains(check))
