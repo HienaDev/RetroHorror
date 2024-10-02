@@ -74,6 +74,7 @@ public class PhoneSounds : MonoBehaviour
         audioSourceDontMove.spatialBlend = 1;
         audioSourceHide.spatialBlend = 1;
         audioSourceHeedMyCall.spatialBlend = 1;
+        audioSourcePickUp.spatialBlend = 1;
 
         audioSourceDontMove.maxDistance = 0.5f;
         audioSourceDontMove.minDistance = 0.5f;
@@ -81,6 +82,8 @@ public class PhoneSounds : MonoBehaviour
         audioSourceHide.minDistance = 0.5f;
         audioSourceHeedMyCall.maxDistance = 0.5f;
         audioSourceHeedMyCall.minDistance = 0.5f;
+        audioSourcePickUp.maxDistance = 0.5f;
+        audioSourcePickUp.minDistance = 0.5f;
 
         audioSourcePutDown.volume = 0.2f;
         audioSourceRinging.volume = 1f;
