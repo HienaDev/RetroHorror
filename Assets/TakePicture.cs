@@ -88,7 +88,7 @@ public class TakePicture : MonoBehaviour
                         if(proofCount >= proofsNeededToWin * 0.625 && !badGuySpawned)
                         {
                             badGuySpawned = true;
-                            spawner.SpawnNPC(State.Here);
+                            spawner.GetComponent<PhoneLogic>().TriggerNewCall();
                             spawner.GetComponent<PhoneLogic>().StopSpawning();
                         }
                         

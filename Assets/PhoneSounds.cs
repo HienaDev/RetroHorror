@@ -30,6 +30,10 @@ public class PhoneSounds : MonoBehaviour
     private AudioSource audioSourceHeedMyCall;
     [SerializeField] private AudioMixerGroup heedMyCallMixer;
 
+    [SerializeField] private AudioClip[] hereMyCallSound;
+    private AudioSource audioSourceHereMyCall;
+    [SerializeField] private AudioMixerGroup hereMyCallMixer;
+
     [SerializeField] private float timeBetweenRinging;
 
     private PlayerMovement playerScript;
@@ -69,11 +73,17 @@ public class PhoneSounds : MonoBehaviour
         //audioSourceHide.outputAudioMixerGroup = hideMixer;
         AudioManager.instance.audioSources.Add(audioSourceHeedMyCall);
 
+        audioSourceHereMyCall = gameObject.AddComponent<AudioSource>();
+        audioSourceHereMyCall.playOnAwake = false;
+        //audioSourceHide.outputAudioMixerGroup = hideMixer;
+        AudioManager.instance.audioSources.Add(audioSourceHereMyCall);
+
         audioSourcePutDown.spatialBlend = 1;
         audioSourceRinging.spatialBlend = 1;
         audioSourceDontMove.spatialBlend = 1;
         audioSourceHide.spatialBlend = 1;
         audioSourceHeedMyCall.spatialBlend = 1;
+        audioSourceHereMyCall.spatialBlend = 1;
         audioSourcePickUp.spatialBlend = 1;
 
         audioSourceDontMove.maxDistance = 0.5f;
@@ -82,6 +92,8 @@ public class PhoneSounds : MonoBehaviour
         audioSourceHide.minDistance = 0.5f;
         audioSourceHeedMyCall.maxDistance = 0.5f;
         audioSourceHeedMyCall.minDistance = 0.5f;
+        audioSourceHereMyCall.maxDistance = 0.5f;
+        audioSourceHereMyCall.minDistance = 0.5f;
         audioSourcePickUp.maxDistance = 0.5f;
         audioSourcePickUp.minDistance = 0.5f;
 
@@ -91,6 +103,7 @@ public class PhoneSounds : MonoBehaviour
         audioSourcePickUp.volume = 1f;
         audioSourceHide.volume = 0.4f;
         audioSourceHeedMyCall.volume = 0.4f;
+        audioSourceHereMyCall.volume = 0.4f;
 
         //audioSourcePickUp.clip = pickUpSound;
         audioSourceRinging.loop = true;
@@ -110,14 +123,7 @@ public class PhoneSounds : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            PlayDontMoveSound();
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            PlayHideSound();
-        }
+
     }
 
     public void PlayRingingSound()
@@ -182,16 +188,29 @@ public class PhoneSounds : MonoBehaviour
 
     public void PlayHeedMyCallSound()
     {
-        Debug.Log("play heed my call");
+
         if (heedMyCallSound.Length > 0)
         {
-            Debug.Log("play heed my call was played");
+
             audioSourceHeedMyCall.clip = heedMyCallSound[Random.Range(0, heedMyCallSound.Length)];
             audioSourceHeedMyCall.pitch = Random.Range(0.95f, 1.05f);
 
             audioSourceHeedMyCall?.Play();
         }
-        else
-            Debug.Log("cant find heed my call");
+
+    }
+
+    public void PlayHereMyCallSound()
+    {
+
+        if (hereMyCallSound.Length > 0)
+        {
+
+            audioSourceHereMyCall.clip = hereMyCallSound[Random.Range(0, hereMyCallSound.Length)];
+            audioSourceHereMyCall.pitch = Random.Range(0.95f, 1.05f);
+
+            audioSourceHereMyCall?.Play();
+        }
+
     }
 }

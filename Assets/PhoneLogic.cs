@@ -63,8 +63,7 @@ public class PhoneLogic : MonoBehaviour
     void Update()
     {
 
-        if (!stopSpawnning)
-        {
+
             if (Time.time - callStarted > phoneRingMaxDuration && !phonePickedUp)
             {
                 if (Time.time - justSpawned > timeToSpawnMoreMonsters)
@@ -76,7 +75,7 @@ public class PhoneLogic : MonoBehaviour
 
             }
 
-            if (Time.time - justRinged > phoneCurrentCooldown && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForPhone)
+            if (Time.time - justRinged > phoneCurrentCooldown && Vector3.Distance(playerPos.transform.position, transform.position) < minimumDistanceForPhone && !stopSpawnning)
             {
                 NewPhoneCooldown();
                 callStarted = Time.time;
@@ -123,8 +122,17 @@ public class PhoneLogic : MonoBehaviour
                 }
 
             }
-        }
+        
 
+    }
+
+    public void TriggerNewCall()
+    {
+        NewPhoneCooldown();
+        callStarted = Time.time;
+        phonePickedUp = false;
+        needsPickingUp = true;
+        standPhoneSounds.PlayRingingSound();
     }
 
     private void FixedUpdate()
@@ -173,6 +181,12 @@ public class PhoneLogic : MonoBehaviour
             firstCall = false;
             heedMyCalls.SetActive(true);
             handPhoneSounds.PlayHeedMyCallSound();
+        }
+        else if (stopSpawnning)
+        {
+            dontMove.SetActive(true);
+            handPhoneSounds.PlayHereMyCallSound();
+            StartCoroutine(SpawnNpc(State.Here, 5f));
         }
         else
         {
