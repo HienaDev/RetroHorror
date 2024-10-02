@@ -72,6 +72,7 @@ public class PlayerSounds : MonoBehaviour
         audioSourceSteps.spatialBlend = 1;
         audioSourceStepsGravel.spatialBlend = 1;
         audioSourceBlockBreaking.spatialBlend = 1;
+        audioSourcePickUp.spatialBlend = 0.95f;
 
         audioSourceTakePicture.volume = 0.2f;
         audioSourceSteps.volume = 0.1f;
