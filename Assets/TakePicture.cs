@@ -35,6 +35,8 @@ public class TakePicture : MonoBehaviour
     [SerializeField] private NPCSpawner spawner;
     private bool badGuySpawned = false;
 
+    [SerializeField] private PlayerSounds playerSounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +76,13 @@ public class TakePicture : MonoBehaviour
                         if(savedCoroutine != null)
                             StopCoroutine(savedCoroutine);
 
-                        savedCoroutine = StartCoroutine(ChangeText("Proof already found"));
+                        if (proofCount >= proofsNeededToWin)
+                        {
+                            GotAllProof = true;
+                            savedCoroutine = StartCoroutine(ChangeText($"All proofs found. Get to the front door!"));
+                        }
+                        else
+                            savedCoroutine = StartCoroutine(ChangeText("Proof already found"));
                     }
                     else
                     {
@@ -83,6 +91,7 @@ public class TakePicture : MonoBehaviour
 
                         alreadyFoundProofs.Add(check);
 
+                        playerSounds.PlayMenuSound();
                         proofCount++;
 
                         if(proofCount >= proofsNeededToWin * 0.625 && !badGuySpawned)

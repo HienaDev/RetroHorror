@@ -73,6 +73,7 @@ public class PlayerSounds : MonoBehaviour
         audioSourceStepsGravel.spatialBlend = 1;
         audioSourceBlockBreaking.spatialBlend = 1;
         audioSourcePickUp.spatialBlend = 0.98f;
+        audioSourceMenu.spatialBlend = 1;
 
         audioSourcePickUp.minDistance = 0.1f;
         audioSourcePickUp.maxDistance = 10f;
