@@ -24300,6 +24300,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1559369817}
     - target: {fileID: 7623525396653558470, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
+      propertyPath: imHere
+      value: 
+      objectReference: {fileID: 2092509348}
+    - target: {fileID: 7623525396653558470, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
       propertyPath: dontMove
       value: 
       objectReference: {fileID: 1559369821}
