@@ -84,10 +84,11 @@ public class NPCSpawner : MonoBehaviour
                 Debug.LogError("Failed to find a valid NavMesh position to spawn NPC.");
             }
         }
-        else if (state == State.Chase)
+        else if (state == State.Here)
         {
             // Step 1: Find a random position on the NavMesh for the NPC to spawn
-            Vector3 spawnPosition = GetRandomPointOnNavMesh(transform.position, 3f, 6f);
+            // Step 1: Find a random position on the NavMesh for the NPC to spawn
+            Vector3 spawnPosition = GetRandomPointOnNavMesh(new Vector3(transform.position.x, transform.position.y + spawnHeight, transform.position.z), minSpawnRadius, maxSpawnRadius);
 
             if (spawnPosition != Vector3.zero)
             {
