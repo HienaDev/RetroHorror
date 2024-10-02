@@ -1253,6 +1253,7 @@ MonoBehaviour:
   monsterGoneSound: {fileID: 220217549809704038, guid: 239af73810f9dc7448fca1bfd4b3f608, type: 3}
   monsterSeeSound: {fileID: 220217549809704038, guid: 8226e0a635c77494691581d9b980fbcf, type: 3}
   meshObject: {fileID: 4149993419713705263}
+  distanceToJumpscare: 2
 --- !u!1 &5115914133173719207
 GameObject:
   m_ObjectHideFlags: 0
