@@ -123,7 +123,7 @@ public class EnemyVision : MonoBehaviour
 
     private void CheckArrival(NavMeshAgent agent)
     {
-        if (currentState == State.Chase && Vector3.Distance(gameObject.transform.position, player.transform.position) > distanceToJumpscare)
+        if (currentState == State.Chase && Vector3.Distance(gameObject.transform.position, player.transform.position) < distanceToJumpscare)
         {
             player.GetComponent<PlayerMovement>().ToggleMovement(false);
             player.GetComponentInChildren<FirstPersonCamera>().ToggleCamera(false);
@@ -259,6 +259,10 @@ public class EnemyVision : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, agentStoppingDistance);
 
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, distanceToJumpscare);
+
     }
+
 
 }
