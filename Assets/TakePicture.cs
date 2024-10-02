@@ -37,6 +37,8 @@ public class TakePicture : MonoBehaviour
 
     [SerializeField] private PlayerSounds playerSounds;
 
+    public List<Texture> allPhotosTaken = new List<Texture>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,7 @@ public class TakePicture : MonoBehaviour
 
         rtc.GetLatestPhoto();
         poraloid.GetComponent<Renderer>().material.SetTexture("_BaseMap", rtc.toTexture2D(captureTexture));
+        allPhotosTaken.Add(poraloid.GetComponent<Renderer>().material.GetTexture("_BaseMap"));
         CheckIfProofAlreadyFound();
     }
 
