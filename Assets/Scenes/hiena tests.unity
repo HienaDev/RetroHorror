@@ -889,7 +889,7 @@ Transform:
   m_GameObject: {fileID: 69482667}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2295, y: 0.1699, z: -0.003}
+  m_LocalPosition: {x: -0.2295, y: 0.1699, z: -0.0044000032}
   m_LocalScale: {x: 0.026174882, y: 0.112066805, z: 0.011353518}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2841,7 +2841,7 @@ Transform:
   m_GameObject: {fileID: 254740520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.054, y: 0.1693, z: -0.003}
+  m_LocalPosition: {x: 0.054, y: 0.1693, z: -0.0044000032}
   m_LocalScale: {x: 0.29150897, y: 0.113838695, z: 0.011353518}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13907,7 +13907,7 @@ Transform:
   m_GameObject: {fileID: 914171899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0225, y: 0.0887, z: -0.003}
+  m_LocalPosition: {x: -0.0225, y: 0.0887, z: -0.0044}
   m_LocalScale: {x: 0.43541026, y: 0.10466001, z: 0.011353518}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16614,7 +16614,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 439
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -18994,7 +18994,7 @@ Transform:
   m_GameObject: {fileID: 1263840697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.094, y: 0.2189, z: -0.003}
+  m_LocalPosition: {x: -0.094, y: 0.2189, z: -0.0044000032}
   m_LocalScale: {x: 0.29150897, y: 0.01737262, z: 0.011353518}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47663,7 +47663,7 @@ GameObject:
   - component: {fileID: 6861157979299092402}
   - component: {fileID: 1383823995}
   - component: {fileID: 1383823999}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Casa.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52490,7 +52490,7 @@ GameObject:
   - component: {fileID: 4994555655753440760}
   - component: {fileID: 1686383266761997629}
   - component: {fileID: 1748603322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pisina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54912,7 +54912,7 @@ GameObject:
   - component: {fileID: 5912303125739603532}
   - component: {fileID: 1934422908666523628}
   - component: {fileID: 100334719}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Escaleras_Pisina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
