@@ -39,6 +39,7 @@ public class TakePicture : MonoBehaviour
 
     public List<Texture> allPhotosTaken = new List<Texture>();
 
+    [SerializeField] private GameObject doorSpotLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +54,8 @@ public class TakePicture : MonoBehaviour
     public void CameraShooting()
     {
         if (!polaroidFullObject.activeSelf) polaroidFullObject.SetActive(true);
+
+        
 
         rtc.GetLatestPhoto();
         poraloid.GetComponent<Renderer>().material.SetTexture("_BaseMap", rtc.toTexture2D(captureTexture));
@@ -82,6 +85,7 @@ public class TakePicture : MonoBehaviour
                         if (proofCount >= proofsNeededToWin)
                         {
                             GotAllProof = true;
+                            doorSpotLight.SetActive(true);
                             savedCoroutine = StartCoroutine(ChangeText($"All proofs found. Get to the front door!"));
                         }
                         else

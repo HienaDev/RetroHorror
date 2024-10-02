@@ -23,6 +23,7 @@ public class SettingsMenu : MonoBehaviour
                 GetComponentInChildren<AudioListener>().enabled = false;
                 GetComponent<PlayerMovement>().enabled = false;
                 GetComponentInChildren<FirstPersonCamera>().enabled = false;
+                GetComponent<TakePicture>().enabled = false;
                 audioManager.DisableAudioSources();
             }
             else
@@ -33,6 +34,7 @@ public class SettingsMenu : MonoBehaviour
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponent<PlayerMovement>().enabled = true;
                 GetComponentInChildren<FirstPersonCamera>().enabled = true;
+                GetComponent<TakePicture>().enabled = true;
                 audioManager.EnableAudioSources();
             }
         }

@@ -24,6 +24,8 @@ public class LightningStrike : MonoBehaviour
 
     [SerializeField] private PlayerSounds playerSounds;
 
+    public bool canTakePictures = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class LightningStrike : MonoBehaviour
     {
 
 
-        if(Input.GetKeyDown(takePhoto) && readyForNextStrike)
+        if(Input.GetKeyDown(takePhoto) && readyForNextStrike && canTakePictures)
         {
             readyForNextStrike = false;
             StartCoroutine(Strike());

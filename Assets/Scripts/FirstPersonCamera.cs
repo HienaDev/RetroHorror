@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class FirstPersonCamera : MonoBehaviour
 {
     public float mouseSensitivity = 100f; // Sensitivity of the mouse movement
+    private float initialSensitivity;
     public Transform playerBody;          // Reference to the player's body for horizontal rotation
     private float xRotation = 0f;         // Tracks the up/down rotation (vertical)
 
@@ -17,6 +18,7 @@ public class FirstPersonCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initialSensitivity = mouseSensitivity;
         // Lock the cursor to the center of the screen and make it invisible
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
@@ -47,7 +49,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     public void ChangeCameraSensitivity()
     {
-        mouseSensitivity = Mathf.Lerp(10, 1000, slider.GetComponent<Slider>().value);
+        mouseSensitivity = Mathf.Lerp(initialSensitivity * 0.02f, initialSensitivity * 2, slider.GetComponent<Slider>().value);
         Debug.Log(mouseSensitivity);
     }
 }

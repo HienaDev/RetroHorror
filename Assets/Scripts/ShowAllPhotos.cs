@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ShowAllPhotos : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class ShowAllPhotos : MonoBehaviour
 
     [SerializeField] private TakePicture takePictureScript;
     [SerializeField] private GameObject polaroidPrefab;
+    [SerializeField] private GameObject bigFrameUI;
+
+    [SerializeField] private GameObject parentObjectForPolaroids;   
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,9 +27,10 @@ public class ShowAllPhotos : MonoBehaviour
     {
         foreach(Texture tex in takePictureScript.allPhotosTaken)
         {
-            GameObject polaroid = Instantiate(polaroidPrefab);
-            polaroid.GetComponentInChildren<PhotoPolaroid>().GetComponent<Renderer>().material.SetTexture("_BaseMap", tex);
-            polaroid.transform.position = new Vector3(Random.Range(-5f, 6f), Random.Range(-5f, 6f), 0f) ;  
+            GameObject polaroid = Instantiate(polaroidPrefab, parentObjectForPolaroids.transform);
+            polaroid.GetComponentInChildren<PhotoPolaroid>().GetComponent<RawImage>().texture = tex;
+            polaroid.GetComponent<UIPolaroidFrame>().SetBigFrame(bigFrameUI);
+            polaroid.transform.localPosition = new Vector3( Random.Range(-300f, 300f), Random.Range(-200f, 200f), polaroid.transform.position.z);  
             yield return wfs;
         }
     }
