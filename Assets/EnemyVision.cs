@@ -30,6 +30,7 @@ public class EnemyVision : MonoBehaviour
     private bool canDie = false;
 
     [SerializeField] private GameObject monsterGoneSound;
+    [SerializeField] private GameObject monsterSeeSound;
 
     [SerializeField] private GameObject meshObject;
 
@@ -203,6 +204,7 @@ public class EnemyVision : MonoBehaviour
     private void ChasePlayer()
     {
         npcAgent.SetDestination(player.transform.position);
+        GameObject temp = Instantiate(monsterSeeSound);
     }
 
     bool CanSeePlayer()
