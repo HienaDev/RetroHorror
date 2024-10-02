@@ -35,6 +35,8 @@ public class EnemyVision : MonoBehaviour
 
     [SerializeField] private GameObject meshObject;
 
+    [SerializeField] private float distanceToJumpscare = 1f;
+
     private void Start()
     {
         justSpawned = Time.time;
@@ -121,19 +123,21 @@ public class EnemyVision : MonoBehaviour
 
     private void CheckArrival(NavMeshAgent agent)
     {
+        if (currentState == State.Chase && Vector3.Distance(gameObject.transform.position, player.transform.position) > distanceToJumpscare)
+        {
+            player.GetComponent<PlayerMovement>().ToggleMovement(false);
+            player.GetComponentInChildren<FirstPersonCamera>().ToggleCamera(false);
+            player.GetComponentInChildren<TriggerJumpScareScript>().JumpScare();
+
+            Destroy(gameObject, 0.1f);
+        }
+
 
         // Step 4: Check if the NPC has arrived at the destination
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !agent.hasPath)
         {
-            if(currentState == State.Chase)
-            {
-                player.GetComponent<PlayerMovement>().ToggleMovement(false);
-                player.GetComponentInChildren<FirstPersonCamera>().ToggleCamera(false);
-                player.GetComponentInChildren<TriggerJumpScareScript>().JumpScare();
+            
 
-                Destroy(gameObject, 0.1f);
-            }
-            else
             {
                 // Step 5: Once the NPC arrives, find a new destination
                 Debug.Log("NPC arrived at destination. Finding new destination...");
