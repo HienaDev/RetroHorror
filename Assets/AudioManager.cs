@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioSource audio in audioSources)
         {
-            audio.Play();
+            audio.UnPause();
         }
     }
 
