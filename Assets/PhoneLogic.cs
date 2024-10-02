@@ -35,6 +35,7 @@ public class PhoneLogic : MonoBehaviour
     [SerializeField] private GameObject heedMyCalls;
     [SerializeField] private GameObject dontMove;
     [SerializeField] private GameObject hide;
+    [SerializeField] private GameObject imHere;
 
     [SerializeField] private GameObject pickUpPhone;
     [SerializeField] private GameObject putDownPhone;
@@ -184,7 +185,7 @@ public class PhoneLogic : MonoBehaviour
         }
         else if (stopSpawnning)
         {
-            dontMove.SetActive(true);
+            imHere.SetActive(true);
             handPhoneSounds.PlayHereMyCallSound();
             StartCoroutine(SpawnNpc(State.Here, 5f));
         }
