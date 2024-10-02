@@ -47,7 +47,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     public void ChangeCameraSensitivity()
     {
-        mouseSensitivity = Mathf.Lerp(50, 1000, slider.GetComponent<Slider>().value);
+        mouseSensitivity = Mathf.Lerp(10, 1000, slider.GetComponent<Slider>().value);
         Debug.Log(mouseSensitivity);
     }
 }

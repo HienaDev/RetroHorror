@@ -14527,7 +14527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &949583386
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15193,8 +15193,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1588212740}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -23172,11 +23172,11 @@ PrefabInstance:
       objectReference: {fileID: 1887021562}
     - target: {fileID: 4776411464745645022, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: mouseSensitivity
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5094401406324160631, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7654883161561004900, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: shakeCamera
@@ -23241,7 +23241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1559369816}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409595831}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fdc4f09b98f94945ac02cfd2adc7e4d, type: 3}
   m_Name: 
@@ -23259,6 +23259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 949583385}
+  audioManager: {fileID: 1913946040}
 --- !u!64 &1560815280
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27859,6 +27860,52 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4923735431680913999, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
+--- !u!1 &1913946038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913946039}
+  - component: {fileID: 1913946040}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913946039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913946038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 234.0001, y: 131.5, z: 0.0000076293945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913946040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913946038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5d672df3dd9a14296a663b78b67874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources:
+  - {fileID: 489387764}
 --- !u!64 &1919950047
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29640,7 +29687,7 @@ RectTransform:
   m_Father: {fileID: 527231651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -96675,3 +96722,4 @@ SceneRoots:
   - {fileID: 1627324891}
   - {fileID: 391127872}
   - {fileID: 847109662}
+  - {fileID: 1913946039}

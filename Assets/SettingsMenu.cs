@@ -3,6 +3,7 @@ using UnityEngine;
 public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settings;
+    [SerializeField] private AudioManager audioManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +23,7 @@ public class SettingsMenu : MonoBehaviour
                 GetComponentInChildren<AudioListener>().enabled = false;
                 GetComponent<PlayerMovement>().enabled = false;
                 GetComponentInChildren<FirstPersonCamera>().enabled = false;
+                audioManager.DisableAudioSources();
             }
             else
             {
@@ -31,6 +33,7 @@ public class SettingsMenu : MonoBehaviour
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponent<PlayerMovement>().enabled = true;
                 GetComponentInChildren<FirstPersonCamera>().enabled = true;
+                audioManager.EnableAudioSources();
             }
         }
     }

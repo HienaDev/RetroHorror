@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using static UnityEngine.Rendering.VirtualTexturing.Debugging;
-using static UnityEngine.GraphicsBuffer;
+
 public class EnemyVision : MonoBehaviour
 {
     public Transform player; // Reference to the player's transform
     public float viewAngle = 120f; // Field of view angle (120 degrees)
     public float viewDistance = 10f; // Maximum view distance
     public float minDistance = 3f;   // Minimum distance to start detection
-    public LayerMask obstructionMask; // Layer for objects that can block vision (e.g., walls)
+    public LayerMask obstructionMask; // Layer for objects that can block vision (e.g., walls)s
 
     public float minMoveDistance = 15f; // Minimum distance NPC should move from spawn point
     public float maxMoveDistance = 20f; // Minimum distance NPC should move from spawn point

@@ -42,26 +42,32 @@ public class PhoneSounds : MonoBehaviour
         audioSourceRinging = gameObject.AddComponent<AudioSource>();
         audioSourceRinging.playOnAwake = false;
         //audioSourceRinging.outputAudioMixerGroup = ringingMixer;
+        AudioManager.instance.audioSources.Add(audioSourceRinging);
 
         audioSourcePutDown = gameObject.AddComponent<AudioSource>();
         audioSourcePutDown.playOnAwake = false;
         //audioSourcePutDown.outputAudioMixerGroup = putDownMixer;
+        AudioManager.instance.audioSources.Add(audioSourcePutDown);
 
         audioSourceDontMove = gameObject.AddComponent<AudioSource>();
         audioSourceDontMove.playOnAwake = false;
         //audioSourceDontMove.outputAudioMixerGroup = dontMoveMixer;
+        AudioManager.instance.audioSources.Add(audioSourceDontMove);
 
         audioSourcePickUp = gameObject.AddComponent<AudioSource>();
         audioSourcePickUp.playOnAwake = false;
         //audioSourcePickUp.outputAudioMixerGroup = pickUpMixer;
+        AudioManager.instance.audioSources.Add(audioSourcePickUp);
 
         audioSourceHide = gameObject.AddComponent<AudioSource>();
         audioSourceHide.playOnAwake = false;
         //audioSourceHide.outputAudioMixerGroup = hideMixer;
+        AudioManager.instance.audioSources.Add(audioSourceHide);
 
         audioSourceHeedMyCall = gameObject.AddComponent<AudioSource>();
         audioSourceHeedMyCall.playOnAwake = false;
         //audioSourceHide.outputAudioMixerGroup = hideMixer;
+        AudioManager.instance.audioSources.Add(audioSourceHeedMyCall);
 
         audioSourcePutDown.spatialBlend = 1;
         audioSourceRinging.spatialBlend = 1;

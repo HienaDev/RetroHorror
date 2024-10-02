@@ -46,21 +46,27 @@ public class PlayerSounds : MonoBehaviour
     {
         audioSourceSteps = gameObject.AddComponent<AudioSource>();
         audioSourceSteps.outputAudioMixerGroup = stepsMixer;
+        AudioManager.instance.audioSources.Add(audioSourceSteps);
 
         audioSourceTakePicture = gameObject.AddComponent<AudioSource>();
         audioSourceTakePicture.outputAudioMixerGroup = takePictureMixer;
+        AudioManager.instance.audioSources.Add(audioSourceTakePicture);
 
         audioSourceStepsGravel = gameObject.AddComponent<AudioSource>();
         audioSourceStepsGravel.outputAudioMixerGroup = stepsGravelMixer;
+        AudioManager.instance.audioSources.Add(audioSourceStepsGravel);
 
         audioSourceBlockBreaking = gameObject.AddComponent<AudioSource>();
         audioSourceBlockBreaking.outputAudioMixerGroup = blockBreakingMixer;
+        AudioManager.instance.audioSources.Add(audioSourceBlockBreaking);
 
         audioSourcePickUp = gameObject.AddComponent<AudioSource>();
         audioSourcePickUp.outputAudioMixerGroup = pickUpMixer;
+        AudioManager.instance.audioSources.Add(audioSourcePickUp);
 
         audioSourceMenu = gameObject.AddComponent<AudioSource>();
         audioSourceMenu.outputAudioMixerGroup = menuMixer;
+        AudioManager.instance.audioSources.Add(audioSourceMenu);
 
         audioSourceTakePicture.spatialBlend = 1;
         audioSourceSteps.spatialBlend = 1;
