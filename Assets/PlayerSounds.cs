@@ -83,7 +83,7 @@ public class PlayerSounds : MonoBehaviour
         audioSourceStepsGravel.volume = 0.1f;
         audioSourceBlockBreaking.volume = 3f;
         audioSourcePickUp.volume = 1f;
-        audioSourceMenu.volume = 0.4f;
+        audioSourceMenu.volume = 0.1f;
 
 
         //audioSourcePickUp.clip = pickUpSound;
