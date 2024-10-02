@@ -7805,6 +7805,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &584429302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584429299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8eb3a119f106f14387d1024df9f404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ringingSound: []
+  ringingMixer: {fileID: 0}
+  pickUpSound:
+  - {fileID: 8300000, guid: 0b416725e69388b4491b948f9535fed4, type: 3}
+  pickUpMixer: {fileID: 0}
+  putDownSound: []
+  putDownMixer: {fileID: 0}
+  dontMoveSound: []
+  dontMoveMixer: {fileID: 0}
+  hideSound: []
+  hideMixer: {fileID: 0}
+  heedMyCallSound: []
+  heedMyCallMixer: {fileID: 0}
+  timeBetweenRinging: 0
 --- !u!64 &598606521
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13284,6 +13310,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ee7ebbd106138145bacac217ff8df23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 584429300}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ee7ebbd106138145bacac217ff8df23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 584429302}
   m_SourcePrefab: {fileID: 100100000, guid: 3ee7ebbd106138145bacac217ff8df23, type: 3}
 --- !u!1001 &880291174
 PrefabInstance:
@@ -15468,6 +15497,59 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8208989598065328994, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
+--- !u!1 &1003158530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003158532}
+  - component: {fileID: 1003158531}
+  m_Layer: 0
+  m_Name: HandTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1003158531
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003158530}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1003158532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003158530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.555, y: 4.667, z: 0.512}
+  m_LocalScale: {x: 1.1945, y: 1.1945, z: 1.1945}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1004643552
 GameObject:
   m_ObjectHideFlags: 0
@@ -23974,6 +24056,10 @@ PrefabInstance:
       propertyPath: handPhoneSounds
       value: 
       objectReference: {fileID: 1559369822}
+    - target: {fileID: 7623525396653558470, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
+      propertyPath: minimumDistanceForPhone
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7646472492617012169, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
       propertyPath: m_Name
       value: Telefono con cable (1)
@@ -47607,7 +47693,8 @@ GameObject:
   - component: {fileID: 821934131668889126}
   - component: {fileID: 8066352430547335705}
   - component: {fileID: 2215518168169056564}
-  m_Layer: 0
+  - component: {fileID: 8066352430547335706}
+  m_Layer: 6
   m_Name: Caja.029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88952,6 +89039,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2301089603707201432}
   m_Mesh: {fileID: 5003740574301030931, guid: 819b1f84ffedcf64a8cd0e3792b0e0d6, type: 3}
+--- !u!65 &8066352430547335706
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301089603707201432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.24308385, y: 0.03454417, z: 0.06344859}
+  m_Center: {x: -0.0016232511, y: -0.0006072511, z: 0.0006554063}
 --- !u!33 &8067663307295592400
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96723,3 +96831,4 @@ SceneRoots:
   - {fileID: 391127872}
   - {fileID: 847109662}
   - {fileID: 1913946039}
+  - {fileID: 1003158532}
