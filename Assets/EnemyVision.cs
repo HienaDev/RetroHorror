@@ -30,6 +30,8 @@ public class EnemyVision : MonoBehaviour
     private bool canDie = false;
 
     [SerializeField] private GameObject monsterGoneSound;
+    [SerializeField] private GameObject monsterSeeSound;
+    
 
     [SerializeField] private GameObject meshObject;
 
@@ -43,6 +45,7 @@ public class EnemyVision : MonoBehaviour
         if (currentState == State.Chase)
         {
             GetComponentInChildren<Animator>().SetTrigger("Crawl");
+            GameObject temp = Instantiate(monsterSeeSound);
             npcAgent.speed = 5f;
         }
 
@@ -67,6 +70,7 @@ public class EnemyVision : MonoBehaviour
             {
                 currentState = State.Chase;
                 GetComponentInChildren<Animator>().SetTrigger("Crawl");
+                GameObject temp = Instantiate(monsterSeeSound);
                 npcAgent.speed = 5f;
             }
             Debug.Log("Player is in sight!");
@@ -88,6 +92,7 @@ public class EnemyVision : MonoBehaviour
 
             currentState = State.Chase;
             GetComponentInChildren<Animator>().SetTrigger("Crawl");
+            GameObject temp = Instantiate(monsterSeeSound);
             npcAgent.speed = 5f;
 
         }
@@ -203,6 +208,7 @@ public class EnemyVision : MonoBehaviour
     private void ChasePlayer()
     {
         npcAgent.SetDestination(player.transform.position);
+        
     }
 
     bool CanSeePlayer()
