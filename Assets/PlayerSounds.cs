@@ -72,11 +72,10 @@ public class PlayerSounds : MonoBehaviour
         audioSourceSteps.spatialBlend = 1;
         audioSourceStepsGravel.spatialBlend = 1;
         audioSourceBlockBreaking.spatialBlend = 1;
-        audioSourcePickUp.spatialBlend = 1f;
+        audioSourcePickUp.spatialBlend = 0.98f;
 
         audioSourcePickUp.minDistance = 0.1f;
-        audioSourcePickUp.maxDistance = 5f;
-        audioSourcePickUp.rolloffMode = AudioRolloffMode.Linear;
+        audioSourcePickUp.maxDistance = 10f;
 
         audioSourceTakePicture.volume = 0.2f;
         audioSourceSteps.volume = 0.1f;
