@@ -30,8 +30,9 @@ public class ShowAllPhotos : MonoBehaviour
             GameObject polaroid = Instantiate(polaroidPrefab, parentObjectForPolaroids.transform);
             polaroid.GetComponentInChildren<PhotoPolaroid>().GetComponent<RawImage>().texture = tex;
             polaroid.GetComponent<UIPolaroidFrame>().SetBigFrame(bigFrameUI);
-            polaroid.transform.localPosition = new Vector3( Random.Range(-300f, 300f), Random.Range(-200f, 200f), polaroid.transform.position.z);  
-            yield return wfs;
+            polaroid.transform.localPosition = new Vector3( Random.Range(-300f, 300f), Random.Range(-150f, 200f), polaroid.transform.position.z);
+            yield return null;
         }
+        
     }
 }

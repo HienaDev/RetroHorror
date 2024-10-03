@@ -54,17 +54,22 @@ public class EnemyVision : MonoBehaviour
         Debug.Log("state is: " + currentState);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-
         if ((Input.GetKeyDown(KeyCode.P)))
         {
             int layerSeeThrough = LayerMask.NameToLayer("SeeThroughWall");
-            if(meshObject.layer != layerSeeThrough)
+            if (meshObject.layer != layerSeeThrough)
                 meshObject.layer = layerSeeThrough;
             else
                 meshObject.layer = LayerMask.NameToLayer("Default");
         }
+    }
+
+    private void FixedUpdate()
+    {
+
+        
 
         if (CanSeePlayer())
         {
