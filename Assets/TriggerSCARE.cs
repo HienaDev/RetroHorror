@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class TriggerHandJumpScare : MonoBehaviour
+public class TriggerSCARE : MonoBehaviour
 {
 
     [SerializeField] private GameObject handJumpScare;
-    
+    [SerializeField] private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +24,7 @@ public class TriggerHandJumpScare : MonoBehaviour
         if(other.GetComponent<PlayerMovement>() != null)
         {
             handJumpScare.SetActive(true);
-            
+            animator.SetTrigger("Trugger");
         }
     }
 }
