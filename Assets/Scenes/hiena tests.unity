@@ -5647,8 +5647,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.22}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.5159225, y: 2.5546837, z: 1.383399}
+  m_Center: {x: -0.015752792, y: -0.11880112, z: -0.5816995}
 --- !u!4 &434817727
 Transform:
   m_ObjectHideFlags: 0
@@ -5658,7 +5658,7 @@ Transform:
   m_GameObject: {fileID: 434817724}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 8.35452, y: -18.154516, z: -14.736346}
+  m_LocalPosition: {x: 8.35452, y: -18.02, z: -14.736346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5678,7 +5678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerToCheckIfInCamera: 0.3
-  distance: 5
+  distance: 3.2
 --- !u!64 &439316872
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27445,6 +27445,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4665534798922532972, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: fadeOut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665534798922532972, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: initialDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4776411464745645022, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: slider
       value: 
@@ -27465,10 +27473,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6105890151774818801, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: m_Name
+      value: Run text
+      objectReference: {fileID: 0}
     - target: {fileID: 6770133069928411736, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: hideSound.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6770133069928411736, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: 'hideSound.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a35da6c2eec15eb4a90d8a8da3bbe508, type: 3}
     - target: {fileID: 6770133069928411736, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: 'hideSound.Array.data[1]'
       value: 
@@ -27668,6 +27684,14 @@ PrefabInstance:
     - target: {fileID: 8185914437355080455, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -161
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383646083075993434, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: m_text
+      value: Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148853334226243640, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: initialDelay
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6221611245588313717, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
@@ -28556,6 +28580,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1015893147}
+    - target: {fileID: 3714677177427921380, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
+      propertyPath: minSpawnRadius
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5280286976361170540, guid: 435f538b0439e2c47b62e2a9bf17dd43, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.665

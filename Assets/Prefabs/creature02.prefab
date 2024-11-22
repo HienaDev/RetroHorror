@@ -2464,6 +2464,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8839375845338735520, guid: 8226e0a635c77494691581d9b980fbcf, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839375845338735520, guid: 8226e0a635c77494691581d9b980fbcf, type: 3}
+      propertyPath: MaxDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839375845338735520, guid: 8226e0a635c77494691581d9b980fbcf, type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839375845338735520, guid: 8226e0a635c77494691581d9b980fbcf, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
