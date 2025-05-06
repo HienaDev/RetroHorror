@@ -14,14 +14,14 @@ public class RenderTextureCapture : MonoBehaviour
     public Sprite ExportPhoto(string type)
     {
         byte[] bytes = toTexture2D(captureTexture).EncodeToPNG();
-        var dirPath = Application.persistentDataPath + "/ExportPhoto";
+        //var dirPath = Application.persistentDataPath + "/ExportPhoto";
 
-        if (!System.IO.Directory.Exists(dirPath))
-        {
-            System.IO.Directory.CreateDirectory(dirPath);
-        }
-        System.IO.File.WriteAllBytes(dirPath + $"/{type}photo" + Random.Range(0, 1000000) + ".png", bytes);
-        Debug.Log(bytes.Length / 1024 + "Kb was saved as: " + dirPath);
+        //if (!System.IO.Directory.Exists(dirPath))
+        //{
+        //    System.IO.Directory.CreateDirectory(dirPath);
+        //}
+        //System.IO.File.WriteAllBytes(dirPath + $"/{type}photo" + Random.Range(0, 1000000) + ".png", bytes);
+        //Debug.Log(bytes.Length / 1024 + "Kb was saved as: " + dirPath);
 
         return sprites.Last();
     }

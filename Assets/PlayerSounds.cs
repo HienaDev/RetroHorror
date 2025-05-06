@@ -94,7 +94,7 @@ public class PlayerSounds : MonoBehaviour
         justStep = timeBetweenSteps;
 
 
-
+        PlayPickUpSound();
     }
 
 
