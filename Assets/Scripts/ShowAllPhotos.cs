@@ -22,6 +22,10 @@ public class ShowAllPhotos : MonoBehaviour
         StartCoroutine(showPhotoWithInterval());
     }
 
+    private void Update()
+    {
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+    }
 
     private IEnumerator showPhotoWithInterval()
     {
@@ -31,7 +35,7 @@ public class ShowAllPhotos : MonoBehaviour
             polaroid.GetComponentInChildren<PhotoPolaroid>().GetComponent<RawImage>().texture = tex;
             polaroid.GetComponent<UIPolaroidFrame>().SetBigFrame(bigFrameUI);
             polaroid.transform.localPosition = new Vector3( Random.Range(-300f, 300f), Random.Range(-150f, 200f), polaroid.transform.position.z);
-            yield return null;
+            yield return wfs;
         }
         
     }
