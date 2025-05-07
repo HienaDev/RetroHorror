@@ -27876,6 +27876,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 873553294103028259, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1347636554427120524, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: phoneOnStand
       value: 
@@ -27910,7 +27914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4593862256599333215, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.09
+      value: -3.08
       objectReference: {fileID: 0}
     - target: {fileID: 4593862256599333215, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27918,7 +27922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4593862256599333215, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.76
+      value: -0.64
       objectReference: {fileID: 0}
     - target: {fileID: 4593862256599333215, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27975,6 +27979,18 @@ PrefabInstance:
     - target: {fileID: 5442914750372549201, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504990189201092413, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: initialDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665942154492992742, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738976251508921874, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6105890151774818801, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_Name
@@ -28196,6 +28212,10 @@ PrefabInstance:
       propertyPath: 'blockBreakingSound.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 19ba623e409c63140b8ca6a1d106e141, type: 3}
+    - target: {fileID: 8138065792985350608, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8185914437355080455, guid: 3acd6ec86ed1ae44990276197865e068, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -161
