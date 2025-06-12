@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class ShowAllPhotos : MonoBehaviour
 {
+    [SerializeField] private float initialDelay = 2f;
     [SerializeField] private float timeBetweenPhotos = 0.1f;
     private YieldInstruction wfs;
 
@@ -15,10 +16,10 @@ public class ShowAllPhotos : MonoBehaviour
     [SerializeField] private GameObject parentObjectForPolaroids;   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    IEnumerator Start()
     {
         wfs = new WaitForSeconds(timeBetweenPhotos);
-
+        yield return new WaitForSeconds(initialDelay);
         StartCoroutine(showPhotoWithInterval());
     }
 
