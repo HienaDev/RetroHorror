@@ -6862,7 +6862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &463314947
 Transform:
   m_ObjectHideFlags: 0
@@ -13544,7 +13544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &721673120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17675,8 +17675,8 @@ Transform:
   m_GameObject: {fileID: 909846757}
   serializedVersion: 2
   m_LocalRotation: {x: -0.42815363, y: -0.56274736, z: 0.5627471, w: 0.42815375}
-  m_LocalPosition: {x: -0.08, y: -0.065, z: -0.008}
-  m_LocalScale: {x: 0.15000002, y: 0.15, z: 0.15000002}
+  m_LocalPosition: {x: -0.01, y: -0.073, z: -0.008}
+  m_LocalScale: {x: 0.111075975, y: 0.11107596, z: 0.111075975}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1025465220}
@@ -20642,8 +20642,8 @@ MonoBehaviour:
   m_UVBias: {x: 0, y: 0}
   m_DecalLayerMask: 1
   m_ScaleMode: 0
-  m_Offset: {x: 0, y: 0, z: 0}
-  m_Size: {x: 2, y: 2, z: 0.01}
+  m_Offset: {x: -0.30276585, y: 0, z: 0}
+  m_Size: {x: 1.3944683, y: 2, z: 0.01}
   m_FadeFactor: 1
 --- !u!65 &1025465223
 BoxCollider:
@@ -33351,7 +33351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1713652601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36040,7 +36040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1899753154
 Transform:
   m_ObjectHideFlags: 0
